@@ -13,7 +13,8 @@ module.exports = merge(commonWebpackConfig, {
         historyApiFallback: true,
         hot: true,
         open: true,
-        inline: true
+        inline: true,
+        host: '192.168.1.103'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

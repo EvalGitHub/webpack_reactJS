@@ -1,5 +1,78 @@
 @import '../mixin.scss';
 .login_wrapper{
-    color:red;
-    width: vw(20)
+    padding: pxToRem(30) pxToRem(20) 0;
+    .login_nav{
+        width: pxToRem(48);
+        height: pxToRem(33);
+        font-size: pxToRem(24);
+        font-family: 'PingFangSC-Semibold';
+        font-weight: 600;
+        color:rgba(34,34,34,1);
+        line-height:pxToRem(33);
+        margin-bottom: pxToRem(30);
+        white-space: nowrap;
+    }
+    .input_wrapper{
+        width: pxToRem(335);
+        display: flex;
+        flex-direction: column;
+        margin-bottom: pxToRem(21);
+        @include one_px_border_bottom;
+        .input_inner_wrapper{
+            display: flex;
+            flex-direction: row;
+            .get_code_btn{
+                width:pxToRem(100);
+                height:pxToRem(32);
+                border-radius:pxToRem(2);
+                background: none;
+                outline: none;
+                border:1px solid rgba(221,221,221,1);
+                font-size:pxToRem(15);
+                font-family:PingFangSC-Regular;
+                font-weight:400;
+                color:rgba(215,216,218,1);
+                line-height:21px;
+                white-space: nowrap;
+            }
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+            color:rgba(215,216,218,1);
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:rgba(215,216,218,1);
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:rgba(215,216,218,1);
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color:rgba(215,216,218,1);
+        }
+        .input_item{
+            width: pxToRem(278);
+            height: pxToRem(24);
+            font-size: pxToRem(17);
+            font-family: 'PingFangSC-Regular';
+            font-weight: 400;
+            line-height: pxToRem(24);
+            border:none;
+            outline: none;
+            padding-bottom: pxToRem(14);
+        }
+    }
+    .login_btn{
+        margin-top: pxToRem(10);
+        width:pxToRem(335);
+        height:pxToRem(44);
+        background:rgba(255,226,152,1);
+        border-radius:pxToRem(24);
+        outline: none;
+        border: none;
+        font-size:pxToRem(17);
+        font-family:PingFangSC-Medium;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+        line-height:pxToRem(24);
+    }
+
 }
