@@ -6,13 +6,12 @@ class App extends React.Component {
   render() {
     return (
      <div>
-       sssgerferddd
        {routeconfig()}
      </div>
     );
   }
 }
-
+// module.hot.accept()
  
 ReactDOM.render(
   <App/>,

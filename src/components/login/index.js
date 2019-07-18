@@ -6,10 +6,10 @@ class Login extends React.Component {
   render() {
     return (
      <div className='login_wrapper'>
-     login dddddds
+       this   第三代ds但是
      </div>
     );
   }
 }
-
+// module.hot.accept()
 export default Login

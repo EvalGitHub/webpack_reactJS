@@ -8,7 +8,7 @@ module.exports = merge(commonWebpackConfig, {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        port: 9000,
+        port: 9004,
         overlay: true,
         historyApiFallback: true,
         hot: true,
