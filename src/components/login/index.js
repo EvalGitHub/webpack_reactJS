@@ -6,7 +6,7 @@ class Login extends React.Component {
   render() {
     return (
      <div className='login_wrapper'>
-wwweeedddeerrddddsfas达娃的绅士手
+     login dddddds
      </div>
     );
   }
