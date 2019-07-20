@@ -1,0 +1,14 @@
+@import '../mixin.scss';
+.no_order_wrapper{
+     margin: 0 auto;
+     text-align: center;
+    .text_des{
+        width:pxToRem(203);
+        height:pxToRem(21);
+        font-size:pxToRem(15);
+        font-family:PingFangSC-Regular;
+        font-weight:400;
+        color:rgba(153,153,153,1);
+        line-height:pxToRem(21);
+    }
+}

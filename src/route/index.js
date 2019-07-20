@@ -1,7 +1,7 @@
-import {Route,BrowserRouter as Router, Link } from "react-router-dom"
+import {Route,BrowserRouter as Router, Link } from "react-router-dom";
 import * as React from 'react';
-import Login from '@/components/Login'
-import Detail from '@/components/Detail'
+import Login from '@/components/login';
+import Order from '@/components/order';
 
  // route link 
 function RouteLink () {
@@ -9,7 +9,7 @@ function RouteLink () {
         <ul>
             <li>
                 <Link to="/">to login page</Link>
-                <Link to="/detail">to detail page</Link>
+                <Link to="/order">to detail page</Link>
             </li>
         </ul>
     )
@@ -21,7 +21,7 @@ function routeConfig () {
         <Router>
             {/* <RouteLink/> */}
             <Route exact path="/" component={Login}/>
-            <Route path="/detail" component={Detail}/>
+            <Route path="/order" component={Order}/>
         </Router>
     )
 }
