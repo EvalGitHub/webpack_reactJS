@@ -22,7 +22,8 @@
             display: flex;
             flex-direction: row;
             .get_code_btn{
-                width:pxToRem(100);
+                // width:pxToRem(100);
+                padding:pxToRem(5) pxToRem(13);
                 height:pxToRem(32);
                 border-radius:pxToRem(2);
                 background: none;
@@ -32,11 +33,13 @@
                 font-family:PingFangSC-Regular;
                 font-weight:400;
                 color:rgba(215,216,218,1);
-                line-height:21px;
+                height:pxToRem(32);
                 white-space: nowrap;
                 cursor: pointer;
+                pointer-events:none;
                 &.active{
                     color:rgba(255,194,43,1);
+                    pointer-events:auto;
                 }
             }
         }
@@ -77,6 +80,9 @@
         font-weight:500;
         color:rgba(255,255,255,1);
         line-height:pxToRem(24);
+        &.active{
+            background:rgba(255,194,43,1);
+        }
     }
 
 }

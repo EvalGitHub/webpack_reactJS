@@ -14,7 +14,7 @@ module.exports = merge(commonWebpackConfig, {
         hot: true,
         open: true,
         inline: true,
-       // host: '192.168.104.40'
+        host: '192.168.1.103'
     },
     plugins: [
         new webpack.NamedModulesPlugin(),

@@ -2,7 +2,7 @@ import {Route,BrowserRouter as Router, Link } from "react-router-dom";
 import * as React from 'react';
 import Login from '@/components/login';
 import Order from '@/components/order';
-
+import PaymentInfo from '@/components/payment';
  // route link 
 function RouteLink () {
     return (
@@ -22,6 +22,7 @@ function routeConfig () {
             {/* <RouteLink/> */}
             <Route exact path="/" component={Login}/>
             <Route path="/order" component={Order}/>
+            <Route path="/payment" component={PaymentInfo}/>
         </Router>
     )
 }

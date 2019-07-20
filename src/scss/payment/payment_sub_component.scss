@@ -1,0 +1,50 @@
+@import '../mixin.scss';
+.pay_button_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex:1;
+    font-size:pxToRem(13);
+    height: pxToRem(56);
+    line-height: pxToRem(56);
+    background: #fff;
+    padding: 0 pxToRem(16);
+    box-shadow:0px 0px 0px 0px rgba(0,0,0,0.08);
+    white-space: nowrap;
+    .count_number{
+        font-family:PingFangSC-Regular;
+        color:rgba(153,153,153,1);
+    };
+    .total_cash{
+        margin: 0 pxToRem(29) 0 pxToRem(8);
+        display: flex;
+        align-items: center;
+        .text_des{
+            font-weight:400;
+            color:rgba(34,34,34,1);
+            // height:pxToRem(40);
+        };
+        .cash_count{
+            width:pxToRem(101);
+            // height:pxToRem(23);
+            font-size:pxToRem(19);
+            font-family:HelveticaNeue-Medium;
+            font-weight:500;
+            color:rgba(34,34,34,1);
+            line-height:pxToRem(24);
+        }
+    };
+    .pay_btn{
+        width:pxToRem(132);
+        height:pxToRem(44);
+        background:rgba(255,194,43,1);
+        border-radius:pxToRem(24);
+        outline: none;
+        border:none;
+        font-size:pxToRem(17);
+        font-family:PingFangSC-Medium;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+        text-align: center;
+    }
+}

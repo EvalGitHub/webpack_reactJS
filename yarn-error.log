@@ -1,20 +1,20 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add -D react-hot-loader
+  F:\node\install\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js remove antd-mobile
 
 PATH: 
-  /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/yirui/Library/Android/sdk/tools:/Users/yirui/Library/Android/sdk/tools/bin:/Users/yirui/Library/Android/sdk/platform-tools:/Users/yirui/Library/Android/sdk/emulator:/Users/yirui/Arcanist/arcanist/bin/:/Users/yirui/Library/Android/sdk/tools:/Users/yirui/Library/Android/sdk/tools/bin:/Users/yirui/Library/Android/sdk/platform-tools:/Users/yirui/Library/Android/sdk/emulator:/Users/yirui/Arcanist/arcanist/bin/:/usr/local/bin
+  F:\gitTool\Git\mingw64\bin;F:\gitTool\Git\usr\bin;C:\Users\Administrator\bin;F:\python\instal2.0l;F:\python\instal2.0l\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;F:\gitTool\Git\cmd;F:\xampp\install\php;F:\mongoDB\install\bin;F:\xampp\install\mysql\bin;F:\node\install;F:\vscode\install\Microsoft VS Code\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;F:\redis\Redis-x64-3.0.503;F:\mongoDB\install\bin;F:\python\install\Scripts;F:\python\install;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;F:\xampp\install\php;F:\xampp\install\mysql\bin;F:\vscode\install\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;F:\adb\adb1.0.32\adb;F:\mongoDB\install\bin
 
 Yarn version: 
   1.16.0
 
 Node version: 
-  10.16.0
+  8.11.3
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: EACCES: permission denied, rmdir '/Users/yirui/codemao/cashier/node_modules/.staging/@babel'
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\Administrator\AppData\Local\Yarn\Cache\v4\npm-inherits-2.0.1-b17d08d326b4423e568eff719f91b0b1cbdf69f1\node_modules\inherits\inherits.js' -> 'F:\my-pro\webpack_reactJS\node_modules\assert\node_modules\inherits\inherits.js'
 
 npm manifest: 
   {
@@ -36,7 +36,7 @@ npm manifest:
       "@babel/preset-react": "^7.0.0",
       "babel-loader": "^8.0.6",
       "clean-webpack-plugin": "^3.0.0",
-      "css-loader": "^3.0.0",
+      "css-loader": "^3.1.0",
       "html-webpack-plugin": "^3.2.0",
       "node-sass": "^4.12.0",
       "sass-loader": "^7.1.0",

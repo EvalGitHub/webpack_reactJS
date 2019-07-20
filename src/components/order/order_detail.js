@@ -3,6 +3,7 @@ import * as React from 'react';
 import {ProductInfo} from './product_info'
 import {LessionInfo} from './lession_info'
 import {ServiceProtocol} from './service_protocol'
+import {OrderInfo} from './order_info'
 import '@/scss/order/order_detail.scss';
 class OrderDetail extends React.Component {
     render () {
@@ -17,7 +18,9 @@ class OrderDetail extends React.Component {
                 <section className="info_item_wrapper">
                     <ServiceProtocol/>
                 </section>
-                <section className="info_item_wrapper"></section>
+                <section className="info_item_wrapper">
+                    <OrderInfo/>         
+                </section>
             </div>
         )
     }
