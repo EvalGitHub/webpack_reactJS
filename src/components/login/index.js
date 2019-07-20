@@ -1,8 +1,11 @@
 
 
 import * as React from 'react';
-import '@/scss/login/index'
+
+import '@/scss/login/index';
+
 class Login extends React.Component {
+
   render() {
     return (
      <div className='login_wrapper'>
@@ -14,7 +17,7 @@ class Login extends React.Component {
          <div className="input_wrapper one_px_border_bottom">
             <p className="input_inner_wrapper">
               <input type="number" pattern="[0-9]*" maxLength="6" className="input_item" placeholder="请输入验证码"/>
-              <button className="get_code_btn">获取验证码</button>
+              <button className="get_code_btn active">获取验证码</button>
             </p>
          </div>
          <button className="login_btn">立即登录</button>
@@ -23,6 +26,4 @@ class Login extends React.Component {
     );
   }
 }
-
-// module.hot.accept()
 export default Login
