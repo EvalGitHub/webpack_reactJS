@@ -7,7 +7,7 @@ module.exports = merge(commonWebpackConfig, {
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': "'production'" 
+            'process.env.NODE_ENV': "'test'" 
          })
     ],
 });

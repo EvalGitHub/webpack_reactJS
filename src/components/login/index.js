@@ -1,7 +1,8 @@
 
 
 import * as React from 'react';
-import Toast from '@/common/toast'
+import Toast from '@/common/toast';
+import {envConfig} from '../../../config'
 import '@/scss/login/index';
 
 const infoArr = {
@@ -109,6 +110,8 @@ class Login extends React.Component {
   };
 
   render() {
+    console.log(process.env.NODE_ENV)
+    console.log(envConfig.host)
     return (
      <div className='login_wrapper'>
        <p className='login_nav'>登录</p>

@@ -14,11 +14,14 @@ module.exports = merge(commonWebpackConfig, {
         hot: true,
         open: true,
         inline: true,
-        host: '192.168.1.103'
+        // host: '192.168.1.103'
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV':  "'development'"
+         })
     ],
 });

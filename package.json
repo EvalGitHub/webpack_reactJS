@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "createFile": "node create_host_config.js production && webpack --env.NODE_ENV=production && node server.js",
     "dev": "webpack-dev-server --open --env.NODE_ENV=development",
-    "build": "webpack --env.NODE_ENV=production"
+    "build:pro": "webpack --env.NODE_ENV=production && node server.js",
+    "build:stage": "webpack --env.NODE_ENV=stage && node server.js",
+    "build:test": "webpack --env.NODE_ENV=test && node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +20,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
@@ -25,7 +29,7 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   },
