@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  
 module.exports = {
     context: path.resolve(__dirname, '../src'),
-    entry: './index.js',
+    entry: './index.tsx',
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
@@ -15,7 +15,7 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, '../src/'),
         },
-        extensions: ['.js', '.json', '.scss']
+        extensions: ['.js', '.json', '.scss', '.tsx']
     },
     module: {
         rules: [
@@ -28,11 +28,6 @@ module.exports = {
                     presets: ['@babel/preset-env','@babel/preset-react']
                   }
                 }
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
@@ -50,6 +45,11 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ],
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
             }
         ]
 
