@@ -1,0 +1,28 @@
+.search_bar{
+  .des{
+      font-size:16px;
+  };
+  .search_wrapper{
+      display:flex;
+      flex-direction: flex-start;
+      flex-wrap: wrap;
+      margin-bottom:20px !important;
+      .search_item{
+          margin-right:15px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .select_item{
+              width:100px;
+              margin:0 0 5px 5px;
+              &:first-child{
+                  margin-left:0;
+              }
+          }
+          .input_item{
+              width:100px;
+              margin-left:5px;
+          }
+      }
+  }
+}
