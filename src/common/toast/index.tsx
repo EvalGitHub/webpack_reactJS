@@ -1,4 +1,4 @@
-import './toast.less'
+const styles = require('./toast.scss') ;
 import * as React from 'react';
  
 /**
@@ -16,8 +16,8 @@ function notice (
 ) {
 
     return (
-        <div className="toast_wrapper">
-            <p className="text_des_wrapper">
+        <div className={styles.toast_wrapper}>
+            <p className={styles.text_des_wrapper}>
                 <span>{content}</span>
             </p>
         </div> 

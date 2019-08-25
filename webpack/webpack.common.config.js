@@ -29,12 +29,19 @@ module.exports = {
                   }
                 }
             },
+           
             {
                 test: /\.css$/,
                 exclude: /(node_modules|libs)/,
                 use: [
                   'style-loader',
-                  'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true
+                        }
+                    },
                 ],
             },
             {
@@ -43,22 +50,32 @@ module.exports = {
                 use: [
                     'style-loader',
                     {
-                      loader: 'css-loader',
-                      options: {
-                        // modules: true, 
-                      }
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders:2,
+                            modules: true,
+                            // localIdentName: "[local]_[hash:base64:5]"
+                        }
                     },
-                    'less-loader',
+                    'sass-loader',
                     {
-                      loader: 'postcss-loader',
-                      options: {
-                        parser: 'postcss-scss', // 支持单行注释
-                        plugins: [
-                          require('autoprefixer')
-                        ]
-                      }
+                        loader: 'postcss-loader',
+                        options: {
+                            parser: 'postcss-scss',
+                            plugin: [
+                                require('autoprefixer')
+                            ]
+                        }
                     },
-                    
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            sourceMap: true,
+                            resources: [
+                                path.resolve(__dirname, '../src/scss/mixin.scss')
+                            ]
+                        }
+                    }
                 ],
             },
             {
