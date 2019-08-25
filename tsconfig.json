@@ -5,10 +5,9 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    // "allowJs": true,
-    "baseUrl":".",
-    "paths":{
-      "@/*":["./src/*"]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
     }
   }
 }

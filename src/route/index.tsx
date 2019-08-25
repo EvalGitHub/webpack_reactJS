@@ -1,9 +1,8 @@
 import {Route,BrowserRouter as Router, Link } from "react-router-dom";
 import * as React from 'react';
 import Login from '@/components/login';
-import Manage from '@/components/manage';
-// import User from '@/components/User';
- 
+// import Order from '@/components/order/index.tsx';
+// import PaymentInfo from '@/components/payment/index.tsx';
  // route link 
 function RouteLink () {
     return (
@@ -17,14 +16,13 @@ function RouteLink () {
 }
 
 // route to component 
-function routeConfig () {
+function Routeconfig () {
     return (
         <Router>
             {/* <RouteLink/> */}
             <Route exact path="/" component={Login}/>
-            <Route path="/manage" component={Manage}/>
         </Router>
     )
 }
 
-export default routeConfig
+export default Routeconfig

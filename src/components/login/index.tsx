@@ -1,12 +1,29 @@
 
 
 import * as React from 'react';
-import { Input, Button } from 'antd';
-import {envConfig} from '../../../config'
-import  './index.less';
- 
+import  * as styles from '@/scss/login/index.scss';
+const infoArr = {
+  phoneNumberNotice: '只能输入11位数字哦',
+  certCodeNotice: '验证码错误',
+  loginSuccess: '登录成功',
+  isNotRegisted: '您还未注册'
+};
+let timer:any = null;
 interface initProps {};
-interface initState {};
+interface initState {
+  rtCode?: number | string,
+  certCode: number | string,
+  phoneNumber: number| string,
+  phoneNumberNotice: boolean,
+  certCodeNotice: boolean,
+  loginSuccess: boolean,
+  isNotRegisted: boolean,
+  certText: string,
+  canLogin: boolean,
+  timer: null,
+  [propName: string]: any
+};
+
 class Login extends React.Component<initProps, initState> {
   login () {
     this.goWorksManage();
@@ -18,15 +35,24 @@ class Login extends React.Component<initProps, initState> {
 
   render () {
     return (
-      <div className="login_wrapper">
-          <p className="login_title">Nemo运营管理后台</p>
-          <div className="input_wrapper">
-              <Input className="input_item" size="large" placeholder="用户名" />
-              <Input className="input_item" type="password" size="large" placeholder="密码" />
-              <Button className="input_btn" onClick={this.login.bind(this)}  type="primary">登录</Button>
-          </div>
-        </div>
-    )
+     <div className={styles.login_wrapper}>
+       <p className={styles.login_nav}>登录</p>
+       <section>
+         <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
+           <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='请输入收到"购买链接短信"的手机号'/>
+         </p>
+         <div className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
+            <p className={styles.input_inner_wrapper}>
+              <input type='certCode' pattern='[0-9]*' className={styles.input_item} placeholder='请输入验证码'  />
+              <button
+                className={[`${styles.get_code_btn}`, `${String(this.state.phoneNumber).length === 11 ? styles.active : ''}`].join(' ')}
+                >{this.state.certText}</button>
+            </p>
+         </div>
+         <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} onClick={this.login.bind(this)} >立即登录</button>
+       </section>
+     </div>
+    );
   }
   
 }
