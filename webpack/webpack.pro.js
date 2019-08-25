@@ -1,7 +1,7 @@
 const {CleanWebpackPlugin}= require('clean-webpack-plugin');
 const merge = require('webpack-merge');
 const commonWebpackConfig = require('./webpack.common.config');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const glob = require('glob-all');
 const PurifyCSSPlugin = require('purifycss-webpack');

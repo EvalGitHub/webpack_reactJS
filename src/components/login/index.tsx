@@ -12,19 +12,26 @@ let timer:any = null;
 interface initProps {};
 interface initState {
   rtCode?: number | string,
-  certCode: number | string,
-  phoneNumber: number| string,
-  phoneNumberNotice: boolean,
-  certCodeNotice: boolean,
-  loginSuccess: boolean,
-  isNotRegisted: boolean,
-  certText: string,
-  canLogin: boolean,
-  timer: null,
+  certCode?: number | string,
+  phoneNumber?: number| string,
+  phoneNumberNotice?: boolean,
+  certCodeNotice?: boolean,
+  loginSuccess?: boolean,
+  isNotRegisted?: boolean,
+  certText?: string,
+  canLogin?: boolean,
+  timer?: null,
   [propName: string]: any
 };
 
 class Login extends React.Component<initProps, initState> {
+  constructor (props:initProps) {
+    super(props);
+    this.state = {
+      phoneNumber: 0,
+
+    }
+  }
   login () {
     this.goWorksManage();
   };
