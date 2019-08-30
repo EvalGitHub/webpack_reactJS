@@ -6,7 +6,7 @@ module.exports = {
   mode: 'production',
   entry: {
     // 定义程序中打包公共文件的入口文件vendor.js
-    'thirdlibrary': ['react', 'react-router', 'react-dom', 'react-router-dom']
+    'thirdlibrary': ['react', 'react-router', 'react-dom', 'react-router-dom', 'axios']
   },
 
   output: {
