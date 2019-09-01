@@ -5,7 +5,8 @@ const commonWebpackConfig = require('./webpack.common.config');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const glob = require('glob-all');
 const PurifyCSSPlugin = require('purifycss-webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path')
 module.exports = merge(commonWebpackConfig, {
     mode: 'production',
@@ -18,21 +19,32 @@ module.exports = merge(commonWebpackConfig, {
     plugins: [
         new CleanWebpackPlugin(),
         // new BundleAnalyzerPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].[chunkhash:8].css',
-        }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano'),
             cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
             canPrint: true  
         }),
-        new PurifyCSSPlugin({
-            paths: glob.sync([
-              path.join(__dirname, '../src/**/*.js'),
-              // path.join(__dirname, './src/components/*/*.html')
-            ]),
-            styleExtensions:['.css']
+       
+        // new PurifyCSSPlugin({
+        //     paths: glob.sync([
+        //       path.join(__dirname, '../src/**/*.tsx'),
+        //       // path.join(__dirname, './src/components/*/*.html')
+        //     ]),
+        //     styleExtensions:['.css']
+        // }),
+       
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          uglifyOptions: {
+            ie8: false,
+            output: {
+              comments: false,
+              beautify: false,
+            },
+            warnings: false
+          }
         })
     ],
 });

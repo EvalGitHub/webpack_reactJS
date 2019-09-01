@@ -1,7 +1,7 @@
 
 
 import * as React from 'react';
-import  * as styles from '@/scss/login/index.scss';
+import  * as styles from './index.scss';
 const infoArr = {
   phoneNumberNotice: '只能输入11位数字哦',
   certCodeNotice: '验证码错误',
