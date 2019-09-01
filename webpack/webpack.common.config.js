@@ -22,7 +22,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, '../src/'),
     },
-    extensions: ['.js', '.json', '.scss', '.tsx', '.ts']
+    extensions: ['.js', '.json', '.tsx', '.ts']
   },
   module: {
     rules: [
