@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return (
      <div>
-      <Routeconfig/>
+      {Routeconfig()}
      </div>
     );
   }
@@ -20,4 +20,4 @@ function startRenderDom () {
   );
 };
 
- startRenderDom();
+startRenderDom();
