@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import Routeconfig from '@/route';
@@ -21,3 +22,7 @@ function startRenderDom () {
 };
 
 startRenderDom();
+
+if (module.hot) {
+  module.hot.accept()
+}

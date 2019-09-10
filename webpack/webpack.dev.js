@@ -12,6 +12,7 @@ module.exports = merge(commonWebpackConfig, {
     overlay: true,
     historyApiFallback: true,
     hot: true,
+    hotOnly:true,
     open: true,
     inline: true,
     disableHostCheck: true,

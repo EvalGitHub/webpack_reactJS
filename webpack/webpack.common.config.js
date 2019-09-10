@@ -44,7 +44,19 @@ module.exports = {
           // loader: 'babel-loader',
           loader: 'happypack/loader?id=babel-loader', 
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: [
+              [
+                '@babel/preset-env', 
+                {
+                  targets: {
+                    edge: "17",
+                    firefox: "60",
+                    chrome: "67",
+                    safari: "11.1",
+                  },
+                  useBuiltInts: 'usage'
+                }
+            ], '@babel/preset-react']
           }
         }
       },
