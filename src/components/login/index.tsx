@@ -25,25 +25,28 @@ interface initState {
 };
 
 class Login extends React.Component<initProps, initState> {
+  myref:any = '';
+  myrefs:any = '';
   constructor (props:initProps) {
     super(props);
     this.state = {
       phoneNumber: 0,
-
-    }
+    };
+    this.myref = React.createRef();
   }
   login () {
     this.goWorksManage();
   };
 
   goWorksManage () {
-   
+    // console.log(this.myref)
+    console.log(this.myrefs)
   };
 
   render () {
     return (
      <div className={styles.login_wrapper}>
-       <p className={styles.login_nav}>登录</p>
+       <p className={styles.login_nav}  ref={ (ref) => this.myrefs = ref}>登录</p>
        <section>
          <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
            <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='请输入收到"购买链接短信"的手机号'/>
