@@ -1,6 +1,7 @@
 import { Route, HashRouter as Router, Link } from "react-router-dom";
 import * as React from 'react';
 import Login from '@/components/login';
+import { Detail } from '@/components/detail';
 // import Order from '@/components/order/index.tsx';
 // import PaymentInfo from '@/components/payment/index.tsx';
 // route link 
@@ -21,6 +22,7 @@ function Routeconfig() {
     <Router>
       {/* <RouteLink/> */}
       <Route exact path="/" component={Login} />
+      <Route exact path="/Detail" component={Detail} />
     </Router>
   )
 }

@@ -11,10 +11,12 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
-  entry: './index.tsx',
+  entry: {
+    main: './index.tsx'
+  },
   output: {
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    filename: '[name].js', // entry中入口文件，匹配filename
+    chunkFilename: '[name].chunk.js', // 对于其他的非入口文件（间接引用的）
     publicPath: '/',
     path: path.resolve(__dirname, '../dist')
   },
@@ -24,13 +26,18 @@ module.exports = {
     },
     extensions: ['.js', '.json', '.tsx', '.ts']
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all", // 同步异步
+    }
+  },
   module: {
     rules: [
       {
         test: /\.ext$/,  //  loader 的编译结果写入硬盘缓存，再次构建如果文件没有发生变化则会直接拉取缓存
         use: {
-          // loader: 'cache-loader', 
-          loader: 'happypack/loader?id=cache-loader', 
+          loader: 'cache-loader', 
+          // loader: 'happypack/loader?id=cache-loader', 
           options:{
             cacheDirectory: path.resolve('node_modules/.cache')
           }
@@ -41,8 +48,8 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          // loader: 'babel-loader',
-          loader: 'happypack/loader?id=babel-loader', 
+          loader: 'babel-loader',
+          // loader: 'happypack/loader?id=babel-loader', 
           options: {
             presets: [
               [
@@ -66,8 +73,8 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            // loader: 'css-loader',
-            loader: 'happypack/loader?id=css-loader', 
+            loader: 'css-loader',
+            // loader: 'happypack/loader?id=css-loader', 
             options: {
               modules: true,
               namedExport: true
@@ -88,8 +95,8 @@ module.exports = {
               modules: true,
             }
           },
-         'happypack/loader?id=sass-loader',
-          // 'sass-loader',
+         // 'happypack/loader?id=sass-loader',
+         'sass-loader',
           {
             loader: 'postcss-loader',
             // loader: 'happypack/loader?id=postcss-loader', 
@@ -121,8 +128,8 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
-            // loader: 'url-loader',
-            loader: 'happypack/loader?id=url-loader', 
+            loader: 'url-loader',
+            // loader: 'happypack/loader?id=url-loader', 
             options: {
               outputPath: 'assets/',
               limit: 20024, // 20kb(20*1024)
@@ -134,46 +141,46 @@ module.exports = {
     ]
   },
   plugins: [
-    new HappyPack({
-      id: 'cache-loader',
-      threadPool: happyThreadPool,
-      loaders: ['cache-loader']
-    }),
-    new HappyPack({
-      id: 'babel-loader',
-      threadPool: happyThreadPool,
-      loaders: ['babel-loader']
-    }),
-    new HappyPack({
-      id: 'css-loader',
-      threadPool: happyThreadPool,
-      loaders: ['css-loader']
-    }),
-    new HappyPack({
-      id: 'sass-loader',
-      threadPool: happyThreadPool,
-      loaders: ['sass-loader']
-    }),
-    new HappyPack({
-      id: 'postcss-loader',
-      threadPool: happyThreadPool,
-      loaders: ['postcss-loader']
-    }),
-    new HappyPack({
-      id: 'sass-resources-loader',
-      threadPool: happyThreadPool,
-      loaders: ['sass-resources-loader']
-    }),
-    new HappyPack({
-      id: 'ts-loader',
-      threadPool: happyThreadPool,
-      loaders: ['ts-loader']
-    }),
-    new HappyPack({
-      id: 'url-loader',
-      threadPool: happyThreadPool,
-      loaders: ['url-loader']
-    }),
+    // new HappyPack({
+    //   id: 'cache-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['cache-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'babel-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['babel-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'css-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['css-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'sass-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['sass-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'postcss-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['postcss-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'sass-resources-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['sass-resources-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'ts-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['ts-loader']
+    // }),
+    // new HappyPack({
+    //   id: 'url-loader',
+    //   threadPool: happyThreadPool,
+    //   loaders: ['url-loader']
+    // }),
 
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build",
@@ -183,23 +190,26 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '../index.html'
     }),
+
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash:8].css',
+      filename: '[name].css',
+      chunkFilename: '[name].[chunkhash:8].css',
     }),
-    new AddAssetHtmlPlugin(
-      // 对应的 dll 文件路径
-      { 
-        filepath: path.resolve(__dirname, '../dll/thirdlibrary.dll.js'),
-        includeSourcemap: false,
-        hash: true
-      },
-    ),
-    new webpack.DllReferencePlugin(
-      {
-        manifest: path.resolve(__dirname, '..', 'dll/thirdlibrary-manifest.json')
-      }
-    )
+    // new AddAssetHtmlPlugin(
+    //   // 对应的 dll 文件路径
+    //   { 
+    //     filepath: path.resolve(__dirname, '../dll/thirdlibrary.dll.js'),
+    //     includeSourcemap: false,
+    //     hash: true
+    //   },
+    // ),
+    // new webpack.DllReferencePlugin(
+    //   {
+    //     manifest: path.resolve(__dirname, '..', 'dll/thirdlibrary-manifest.json')
+    //   }
+    // )
   ],
+
 };
 
 

@@ -43,10 +43,21 @@ class Login extends React.Component<initProps, initState> {
     console.log(this.myrefs)
   };
 
+  getComponent = async () => {
+    const module = await import(/* webpackChunkName:"createElement" */ '@/utils/index');
+    module.createElement().then((component:any) => {
+      document.body.appendChild(component);
+    });
+    //  const _ = await import(/* webpackChunkName:"lodash" */ 'lodash');
+    //   let element = document.createElement('div');
+    //   element.innerHTML = _.join(['Dell', 'Lee'], '-');
+    //   document.body.appendChild(element);
+  };
+
   render () {
     return (
      <div className={styles.login_wrapper}>
-       <p className={styles.login_nav}  ref={ (ref) => this.myrefs = ref}>登录</p>
+       <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>登录</p>
        <section>
          <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
            <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='请输入收到"购买链接短信"的手机号'/>
@@ -64,7 +75,6 @@ class Login extends React.Component<initProps, initState> {
      </div>
     );
   }
-  
 }
 
 export default Login;
