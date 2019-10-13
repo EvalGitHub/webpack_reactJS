@@ -6,13 +6,14 @@ module.exports = {
   mode: 'production',
   entry: {
     // 定义程序中打包公共文件的入口文件vendor.js
-    'thirdlibrary': ['react', 'react-router', 'react-dom', 'react-router-dom']
+    'react': ['react', 'react-dom'],
+    'react-router': ['react-router', 'react-router-dom']
   },
 
   output: {
     path: path.resolve(__dirname, '..', 'dll'),
     filename: '[name].dll.js',
-    library: '[name]_[hash]',
+    library: '[name]_[hash]', // 暴露这个库,
     libraryTarget: 'this'
   },
 
@@ -20,8 +21,9 @@ module.exports = {
     new webpack.DllPlugin({
       // 定义程序中打包公共文件的入口文件vendor.js
       context: process.cwd(),
+      // 分析库文件的映射关系
       path: path.resolve(__dirname, '..', 'dll/[name]-manifest.json'),
-      name: '[name]_[hash]'
+      name: '[name]_[hash]' // 与output的library同名
     })
   ]
 }

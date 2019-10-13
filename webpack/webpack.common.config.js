@@ -1,18 +1,21 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const HappyPack = require('happypack');
 const os = require('os');
+const fs = require('fs');
 // 获取系统cpu的最大核数
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
-module.exports = {
+let config = {
   context: path.resolve(__dirname, '../src'),
   entry: {
-    main: './index.tsx'
+    index: './index.tsx',
+    list: './list.tsx'
   },
   output: {
     filename: '[name].js', // entry中入口文件，匹配filename
@@ -28,7 +31,8 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all", // 同步异步
+      chunks: "all", 
+      name: 'vendors'
     }
   },
   module: {
@@ -181,35 +185,69 @@ module.exports = {
     //   threadPool: happyThreadPool,
     //   loaders: ['url-loader']
     // }),
-
-    new WebpackBuildNotifierPlugin({
-      title: "My Project Webpack Build",
-      // logo: path.resolve("./img/favicon.png"),
-      suppressSuccess: true
-    }),
-    new HtmlWebpackPlugin({
-      template: '../index.html'
-    }),
-
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].[chunkhash:8].css',
-    }),
-    // new AddAssetHtmlPlugin(
-    //   // 对应的 dll 文件路径
-    //   { 
-    //     filepath: path.resolve(__dirname, '../dll/thirdlibrary.dll.js'),
-    //     includeSourcemap: false,
-    //     hash: true
-    //   },
-    // ),
-    // new webpack.DllReferencePlugin(
-    //   {
-    //     manifest: path.resolve(__dirname, '..', 'dll/thirdlibrary-manifest.json')
-    //   }
-    // )
   ],
-
 };
 
+const plugins = [
+  new CleanWebpackPlugin(),
+  new WebpackBuildNotifierPlugin({
+    title: "My Project Webpack Build",
+    // logo: path.resolve("./img/favicon.png"),
+    suppressSuccess: true
+  }),
+  // new HtmlWebpackPlugin({
+  //   template: '../index.html', // 文件模板
+  //   filename: 'index.html', // 生成的文件名
+  //   chunks: ['vendors~main', 'main'] // 需要引入的模块js
+  // }),
+  new MiniCssExtractPlugin({
+    filename: '[name].css',
+    chunkFilename: '[name].[chunkhash:8].css',
+  }),
+];
+
+function mutipleEntry (config) {
+  Object.keys(config.entry).forEach((item) => {
+    plugins.push(
+      new HtmlWebpackPlugin({
+        template: '../index.html', // 文件模板
+        filename: `${item}.html`, // 生成的文件名
+        chunks: ['vendors', `${item}`] // 需要引入的模块js
+      }),
+    )
+  })
+  return plugins;
+}
+
+function createWebpackDll (plugins) {
+  const files = fs.readdirSync(path.resolve(__dirname, '../dll'));
+  files.forEach(file => {
+    if (/.*\.dll.js/.test(file)) {
+      plugins.push(
+        new AddAssetHtmlPlugin(
+          { 
+            filepath: path.resolve(__dirname, '../dll', file),
+            includeSourcemap: false,
+            hash: true
+          },
+        )
+      )
+    };
+    if (/.*\.manifest.json/.test(file)) {
+      plugins.push(
+        new webpack.DllReferencePlugin(
+          { 
+            manifest: path.resolve(__dirname, '../dll', file)
+          },
+        )
+      )
+    }
+  });
+  return plugins;
+}
+
+config.plugins = mutipleEntry(config);
+config.plugins = createWebpackDll(plugins);
+
+module.exports = config;
 

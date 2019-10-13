@@ -1,6 +1,3 @@
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
 const commonWebpackConfig = require('./webpack.common.config');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -20,7 +17,6 @@ module.exports = merge(commonWebpackConfig, {
     path: path.resolve(__dirname, '../dist')
   },
   plugins: [
-    new CleanWebpackPlugin(),
     // new BundleAnalyzerPlugin(),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
