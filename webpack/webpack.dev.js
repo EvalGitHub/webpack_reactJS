@@ -10,7 +10,7 @@ module.exports = merge(commonWebpackConfig, {
     contentBase: path.join(__dirname, '../dist'),
     port: 9004,
     overlay: true,
-    historyApiFallback: true,
+    historyApiFallback: true, // 支持history路由模式
     hot: true,
     hotOnly:true,
     open: true,

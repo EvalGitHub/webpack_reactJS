@@ -25,9 +25,10 @@ let config = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src/'),
+      '@': path.resolve(__dirname, '../src/'), // 路劲简写
     },
-    extensions: ['.js', '.json', '.tsx', '.ts']
+    extensions: ['.js', '.json', '.tsx', '.ts'], // 引入文件时候可省略的文件后缀
+    mainFiles: ['index', 'indx'] // 可省略的文件名
   },
   optimization: {
     splitChunks: {
@@ -49,7 +50,7 @@ let config = {
         include: path.resolve('src'),
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
@@ -192,7 +193,7 @@ const plugins = [
   new CleanWebpackPlugin(),
   new WebpackBuildNotifierPlugin({
     title: "My Project Webpack Build",
-    // logo: path.resolve("./img/favicon.png"),
+    logo: path.resolve("../assets/favicon.png"),
     suppressSuccess: true
   }),
   // new HtmlWebpackPlugin({
