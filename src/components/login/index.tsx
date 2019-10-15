@@ -1,6 +1,7 @@
 
 
 import * as React from 'react';
+import axios from 'axios';
 import  * as styles from './index.scss';
 const infoArr = {
   phoneNumberNotice: '只能输入11位数字哦',
@@ -52,6 +53,12 @@ class Login extends React.Component<initProps, initState> {
     //   let element = document.createElement('div');
     //   element.innerHTML = _.join(['Dell', 'Lee'], '-');
     //   document.body.appendChild(element);
+  };
+
+  componentDidMount () {
+    axios.get('/react/api/header.json').then((res) => {
+      console.log(res);
+    })
   };
 
   render () {

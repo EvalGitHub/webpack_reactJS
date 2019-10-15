@@ -18,6 +18,18 @@ module.exports = merge(commonWebpackConfig, {
     disableHostCheck: true,
     // host: '192.168.0.6',
     // host: '192.168.108.64'
+    proxy: {
+      '/react/api': {
+        target: 'http://www.dell-lee.com', // 地址代理
+        pathRewrite: {
+          'header.json': 'demo.json' // 路径转发 header.json -> demo.json
+        },
+        changeOrigin: true， // 允许不同的origin，进行访问
+        header: {
+          // cookie
+        }
+      }
+    }
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
