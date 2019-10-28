@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const HappyPack = require('happypack');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const os = require('os');
 const fs = require('fs');
 // 获取系统cpu的最大核数
@@ -205,6 +207,14 @@ const plugins = [
     filename: '[name].css',
     chunkFilename: '[name].[chunkhash:8].css',
   }),
+  new ImageminPlugin({
+    plugins: [
+      imageminMozjpeg({
+        quality: 70,
+        progressive: true
+      })
+    ]
+  })
 ];
 
 function mutipleEntry (config) {
@@ -251,4 +261,3 @@ config.plugins = mutipleEntry(config);
 config.plugins = createWebpackDll(plugins);
 
 module.exports = config;
-

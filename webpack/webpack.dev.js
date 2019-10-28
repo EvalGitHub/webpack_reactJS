@@ -24,7 +24,7 @@ module.exports = merge(commonWebpackConfig, {
         pathRewrite: {
           'header.json': 'demo.json' // 路径转发 header.json -> demo.json
         },
-        changeOrigin: true， // 允许不同的origin，进行访问
+        changeOrigin: true, // 允许不同的origin，进行访问
         header: {
           // cookie
         }
@@ -37,3 +37,5 @@ module.exports = merge(commonWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin()
   ],
 });
+
+

@@ -63,7 +63,10 @@ class Login extends React.Component<initProps, initState> {
 
   render () {
     return (
-     <div className={styles.login_wrapper}>
+      <>
+         <img className={styles.img} src="../../assets/codemao.jpg" alt="img"/>
+         <div className={styles.bg}/>
+        <div className={styles.login_wrapper}>
        <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>登录</p>
        <section>
          <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
@@ -80,6 +83,7 @@ class Login extends React.Component<initProps, initState> {
          <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} onClick={this.login.bind(this)} >立即登录</button>
        </section>
      </div>
+      </>
     );
   }
 }
