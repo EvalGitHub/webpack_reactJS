@@ -7,7 +7,7 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-
+const SentryPlugin = require('@sentry/webpack-plugin');
 module.exports = merge(commonWebpackConfig, {
   mode: 'production',
   // devtool: 'chep-module-source-map',
@@ -48,6 +48,12 @@ module.exports = merge(commonWebpackConfig, {
         },
         warnings: false
       }
+    }),
+    new SentryPlugin({
+      include: './dist',
+      release: 'release@1.1',
+      ignore: ['node_modules', 'webpack.config.js','webpack'],
+      urlPrefix: '~/'
     })
   ],
 });
