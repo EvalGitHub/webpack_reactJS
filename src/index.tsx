@@ -29,6 +29,9 @@ if (module.hot) {
 }
 
 function initSentry () {
-  Sentry.init({dsn: "https://a9ab229b24b348b8adb2faf56968031e@sentry.io/1798784"});
+  Sentry.init({
+    dsn: "https://a9ab229b24b348b8adb2faf56968031e@sentry.io/1798784",
+    environment: 'development'
+  });
 }
 initSentry();

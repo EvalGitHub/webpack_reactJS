@@ -1,7 +1,7 @@
 [defaults]
-url = http://sentry.io/
-org = organizations
-project = evalgithub
+url = http://sentry.io
+org = evalgithub
+project = webpack_react
 
 [auth]
-token = 6eadf7c6078944cb924b2d11ad426e812050222d2d8c47f8ac9563e3f3543072
+token = 309c4c764a7d40eeb8c322cff92ccac3eb68035fae6f468b8905dff4f1215a37
