@@ -14,7 +14,8 @@ module.exports = merge(commonWebpackConfig, {
   output: {
     filename: '[name].[chunkhash:8].js',
     publicPath: '/',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    sourceMapFilename: "[name].js.map"
   },
   plugins: [
     // new BundleAnalyzerPlugin(),

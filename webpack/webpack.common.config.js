@@ -23,7 +23,8 @@ let config = {
     filename: '[name].js', // entry中入口文件，匹配filename
     chunkFilename: '[name].chunk.js', // 对于其他的非入口文件（间接引用的）
     publicPath: '/',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    sourceMapFilename: "[name].js.map"
   },
   resolve: {
     alias: {
