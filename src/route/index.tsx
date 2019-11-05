@@ -1,7 +1,8 @@
-import { Route, HashRouter as Router, Link } from "react-router-dom";
+import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import * as React from 'react';
 import Login from '@/components/login';
 import { Detail } from '@/components/detail';
+import { HookComponent } from '@/components/hook_component';
 // import Order from '@/components/order/index.tsx';
 // import PaymentInfo from '@/components/payment/index.tsx';
 // route link 
@@ -23,6 +24,7 @@ function Routeconfig() {
       {/* <RouteLink/> */}
       <Route exact path="/" component={Login} />
       <Route exact path="/Detail" component={Detail} />
+      <Route exact path="/hook_component" component={HookComponent} />
     </Router>
   )
 }

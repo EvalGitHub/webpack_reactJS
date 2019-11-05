@@ -1,14 +1,21 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-
+import { NameContext } from '@/index';
 interface initProps {};
 interface initState {};
 class App extends React.Component<initProps, initState> {
   render () {
     return (
-      <div>
-        <div>this is list page</div>
-      </div>
+      <NameContext.Consumer>
+        {
+          (name) => (
+            <>
+              <div>this is list page</div>
+              <p>{name.name}</p>
+            </>
+          )
+        }
+      </NameContext.Consumer>
     )
   }
 };

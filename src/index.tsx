@@ -5,12 +5,36 @@ import Routeconfig from '@/route';
 import * as Sentry from '@sentry/browser';
 import '@/scss/reset.scss';
 import '@/scss/common.scss';
-class App extends React.Component {
+// 创建一个context
+export const NameContext = React.createContext({
+  name: "默认名称",
+  changeName: () => {}
+});
+interface initProps {
+  [propsName:string]:any,
+}
+interface initState {
+  [propsName:string]:any,
+}
+class App extends React.Component<initProps, initState> {
+  constructor (props:any) {
+    super (props);  
+    this.state = {
+      name: '我不是默认值'
+    }
+  }
+
+  changeName = () => {
+    this.setState({
+      name: '我是改变的值'
+    })
+  };
+
   render() {
     return (
-     <div>
+     <NameContext.Provider value={{name: this.state.name, changeName: this.changeName}}>
       {Routeconfig()}
-     </div>
+     </NameContext.Provider>
     );
   }
 };
