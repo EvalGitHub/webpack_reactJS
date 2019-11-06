@@ -71,7 +71,7 @@ let config = {
                   },
                   useBuiltInts: 'usage'
                 }
-            ], '@babel/preset-react']
+            ], '@babel/preset-react', '@babel/preset-typescript', ]
           }
         }
       },

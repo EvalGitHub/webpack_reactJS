@@ -22,9 +22,9 @@ function Routeconfig() {
   return (
     <Router>
       {/* <RouteLink/> */}
-      <Route exact path="/" component={Login} />
-      <Route exact path="/Detail" component={Detail} />
-      <Route exact path="/hook_component" component={HookComponent} />
+      <Route exact path="/" component={Login}/>
+      <Route exact path="/Detail" component={Detail}/>
+      <Route exact path="/hook_component" component={HookComponent}/>
     </Router>
   )
 }
