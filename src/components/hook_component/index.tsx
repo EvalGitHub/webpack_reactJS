@@ -7,15 +7,14 @@ export function HookComponent (props:any) {
     name: '测试对象',
     age: 12
   })
+
   console.log(context)
   return (
     <div style={{'fontSize': '30px', 'padding': '10px'}}>
       <p>this is context {context.name}</p>
       <p>You clicked {count} times</p>
       <p>You age {obj.age} </p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
       <button onClick={() => setObj({...obj, age: obj.age+1})}>
         Add you age
       </button>
