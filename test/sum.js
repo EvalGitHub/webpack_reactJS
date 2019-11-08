@@ -1,4 +1,9 @@
-const sum = require('./sum');
+import {sum, forEach} from './sum';
+
+const mockCallback = jest.fn(x => 42 + x);
+forEach([0, 1], mockCallback);
+expect(mockCallback.mock.calls.length).toBe(2);
+
 
 beforeAll(() => {
   console.log('开始测试');

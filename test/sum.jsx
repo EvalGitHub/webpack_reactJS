@@ -1,4 +1,11 @@
 function sum(a, b) {
   return a + b;
 }
-module.exports = sum;
+
+function forEach(items, callback) {
+  for (let index = 0; index<items.length; index++) {
+    callback(items[index]);
+  }
+}
+
+module.exports = {sum, forEach};
