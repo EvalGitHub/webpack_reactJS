@@ -3,6 +3,7 @@ import * as React from 'react';
 import Login from '@/components/login';
 import { Detail } from '@/components/detail';
 import { HookComponent } from '@/components/hook_component';
+import { CreateEle } from '@/components/react_create_ele';
 // import Order from '@/components/order/index.tsx';
 // import PaymentInfo from '@/components/payment/index.tsx';
 // route link 
@@ -25,6 +26,7 @@ function Routeconfig() {
       <Route exact path="/" component={Login}/>
       <Route exact path="/Detail" component={Detail}/>
       <Route exact path="/hook_component" component={HookComponent}/>
+      <Route exact path="/create_ele" component={CreateEle}/>
     </Router>
   )
 }
