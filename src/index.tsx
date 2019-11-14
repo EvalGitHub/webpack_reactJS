@@ -49,8 +49,10 @@ function startRenderDom () {
 startRenderDom();
 
 if (module.hot) {
-  module.hot.accept()
-}
+  module.hot.accept(() => {
+    console.log('login 更新了')
+  });
+};
 
 function initSentry () {
   Sentry.init({
