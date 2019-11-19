@@ -50,11 +50,11 @@ module.exports = merge(commonWebpackConfig, {
         warnings: false
       }
     }),
-    new SentryPlugin({
-      include: './dist',
-      release: 'release@1.4',
-      ignore: ['node_modules', 'webpack.config.js','webpack'],
-      urlPrefix: '~/'
-    })
+    // new SentryPlugin({
+    //   include: './dist',
+    //   release: 'release@1.4',
+    //   ignore: ['node_modules', 'webpack.config.js','webpack'],
+    //   urlPrefix: '~/'
+    // })
   ],
 });
