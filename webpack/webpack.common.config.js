@@ -69,7 +69,7 @@ let config = {
                     chrome: "67",
                     safari: "11.1",
                   },
-                  useBuiltInts: 'usage'
+                  useBuiltIns: 'usage'
                 }
             ], '@babel/preset-react', '@babel/preset-typescript', ]
           }

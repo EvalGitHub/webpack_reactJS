@@ -10,6 +10,6 @@
         "useESModules": false
       }
     ],
-    "dynamic-import-webpack"
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }
