@@ -11,6 +11,7 @@ function Routeconfig() {
       <Route exact path="/hook_component" component={loadable(() => import("@/components/hook_component"))}/>
       <Route exact path="/create_ele" component={loadable(() => import("@/components/react_create_ele"))}/>
       <Route exact path="/event_trans_info" component={loadable(() => import("@/components/event_trans_info"))}/>
+      <Route exact path="/css_grid_usage" component={loadable(() => import("@/components/css_grid_usage"))}/>
     </Router>
   )
 }

@@ -1,0 +1,8 @@
+.css_grid_wrapper {
+  margin:0 auto;
+ 
+  font-size: 20px;
+  display:grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 50px 50px;
+}
