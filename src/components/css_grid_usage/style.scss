@@ -1,8 +1,21 @@
 .css_grid_wrapper {
-  margin:0 auto;
- 
+  margin: 0 auto;
   font-size: 20px;
-  display:grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 50px 50px;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  background: #ddd;
+  justify-items: stretch;
+  justify-content: center ;
+  // align-content: stretch;
+  grid-gap: pxToRem(20);
+  grid-template-columns: repeat(auto-fill,pxToRem(100)); // 100px 100px 100px;
+  grid-template-rows: repeat(auto-fill, pxToRem(100)); // 50px 50px;
+  .itmes {
+    background: chartreuse;
+    // width: 100%;
+  }
+  .item1 {
+    justify-self: start;
+  }
 }
