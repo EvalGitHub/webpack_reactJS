@@ -35,7 +35,10 @@ class Login extends React.Component<initProps, initState> {
     };
     this.myref = React.createRef();
   }
-  login () {
+  login (e:any) {
+    console.log("target", e.target);
+    console.log("currentTarget", e.currentTarget);
+    e.stopPropagation();
     this.goWorksManage();
   };
 
@@ -49,38 +52,53 @@ class Login extends React.Component<initProps, initState> {
     module.createElement().then((component:any) => {
       document.body.appendChild(component);
     });
-    //  const _ = await import(/* webpackChunkName:"lodash" */ 'lodash');
+    //   const _ = await import(/* webpackChunkName:"lodash" */ 'lodash');
     //   let element = document.createElement('div');
     //   element.innerHTML = _.join(['Dell', 'Lee'], '-');
     //   document.body.appendChild(element);
   };
 
+  testEvent(e:any) {
+    console.log('testEvent');
+  }
+
   componentDidMount () {
     axios.get('/react/api/header.json').then((res) => {
       console.log(res);
     })
+
+    document.body.addEventListener('click', (e:any) => {
+      if  (e.target.id === 'btn') {
+        return '';
+      }
+      console.log('我是body的click监听事件');
+    })
+
+  /*   document.getElementById('btn').addEventListener('click', e => {
+      e.stopPropagation();
+    }) */
   };
 
   render () {
     return (
       <>
-         <img className={styles.img} src="../../assets/codemao.jpg" alt="img"/>
-         <div className={styles.bg}/>
+        <img className={styles.img} src="../../assets/qq.jpg" alt="img"/>
+        <div className={styles.bg}/>
         <div className={styles.login_wrapper}>
-       <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>登录</p>
-       <section>
+       <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>login</p>
+       <section onClick={this.testEvent.bind(this)}>
          <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
-           <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='请输入收到"购买链接短信"的手机号'/>
+           <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='enter your iphone number'/>
          </p>
          <div className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
             <p className={styles.input_inner_wrapper}>
-              <input type='certCode' pattern='[0-9]*' className={styles.input_item} placeholder='请输入验证码'  />
+              <input type='certCode' pattern='[0-9]*' className={styles.input_item} placeholder='enter your test code'  />
               <button
                 className={[`${styles.get_code_btn}`, `${String(this.state.phoneNumber).length === 11 ? styles.active : ''}`].join(' ')}
                 >{this.state.certText}</button>
             </p>
          </div>
-         <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} onClick={this.login.bind(this)} >立即登录</button>
+         <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} id='btn' onClick={this.login.bind(this)} >login now</button>
        </section>
      </div>
       </>
