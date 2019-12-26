@@ -5,6 +5,7 @@ import Routeconfig from '@/route';
 import * as Sentry from '@sentry/browser';
 import '@/scss/reset.scss';
 import '@/scss/common.scss';
+import { hot } from 'react-hot-loader/root';
 // 创建一个context
 export const NameContext = React.createContext({
   name: "默认名称",
@@ -48,6 +49,7 @@ function startRenderDom () {
 
 startRenderDom();
 
+hot(App);
 if (module.hot) {
   module.hot.accept(() => {
     console.log('login 更新了')

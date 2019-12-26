@@ -16,8 +16,8 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 let config = {
   context: path.resolve(__dirname, '../src'),
   entry: {
-    index: './index.tsx',
-    list: './list.tsx'
+    index: [ 'react-hot-loader/patch', './index.tsx'],
+    list: ['react-hot-loader/patch', './list.tsx']
   },
   output: {
     filename: '[name].js', // entry中入口文件，匹配filename
@@ -72,7 +72,8 @@ let config = {
                   corejs: 2,
                   useBuiltIns: 'usage'
                 }
-            ], '@babel/preset-react', '@babel/preset-typescript', ]
+            ], '@babel/preset-react', '@babel/preset-typescript', ],
+            plugins: ['react-hot-loader/babel']
           }
         }
       },

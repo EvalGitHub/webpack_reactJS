@@ -49,6 +49,7 @@
     "postcss-scss": "^2.0.0",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
+    "react-hot-loader": "^4.12.18",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.1",
     "style-loader": "^0.23.1",
