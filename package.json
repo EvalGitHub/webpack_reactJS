@@ -6,8 +6,9 @@
   "scripts": {
     "test": "jest",
     "build:dll": "webpack --config webpack/webpack.dll.config.js",
-    "development": "webpack-dev-server --open --env.NODE_ENV=developent",
-    "build:development": "webpack --env.NODE_ENV=developent --progress",
+    "development": "webpack-dev-server --open --env.NODE_ENV=development",
+    "localServer": "svrx --webpack --localtunnel",
+    "build:development": "webpack --env.NODE_ENV=development --progress",
     "build:production": "webpack --env.NODE_ENV=production --progress",
     "startApp": "node bin/server.js",
     "start": "concurrently \"npm run startApp\" \"npm run development\""
