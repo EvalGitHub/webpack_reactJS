@@ -15,6 +15,7 @@ function Routeconfig() {
         <Route exact path="/css_grid_usage" component={loadable(() => import("@/components/css_grid_usage"))}/>
         <Route exact path="/hight_component" component={loadable(() => import("@/components/hight_component/my_component"))}/>
         <Route exact path="/hight_component02" component={loadable(() => import("@/components/hight_component/my_component02"))}/>
+        <Route exact path="/mobx" component={loadable(() => import("@/components/mobx_use"))}/>
         <Redirect exact from="/" to="/detail"></Redirect>
       </Switch>
     </Router>
