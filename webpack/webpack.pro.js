@@ -7,12 +7,14 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 const SentryPlugin = require('@sentry/webpack-plugin');
 module.exports = merge(commonWebpackConfig, {
   mode: 'production',
   // devtool: 'chep-module-source-map',
   output: {
     filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].[chunkhash:8].js',
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
     sourceMapFilename: "[name].js.map"
@@ -38,7 +40,7 @@ module.exports = merge(commonWebpackConfig, {
     //     ]),
     //     styleExtensions:['.css']
     // }),
-    new UglifyJsPlugin({
+   /*  new UglifyJsPlugin({
       cache: true,
       parallel: true,
       uglifyOptions: {
@@ -49,7 +51,7 @@ module.exports = merge(commonWebpackConfig, {
         },
         warnings: false
       }
-    }),
+    }), */
     // new SentryPlugin({
     //   include: './dist',
     //   release: 'release@1.4',
@@ -57,4 +59,8 @@ module.exports = merge(commonWebpackConfig, {
     //   urlPrefix: '~/'
     // })
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
 });
