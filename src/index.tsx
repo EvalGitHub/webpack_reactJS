@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+// import "@babel/polyfill";
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import Routeconfig from '@/route';

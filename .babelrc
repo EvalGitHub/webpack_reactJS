@@ -7,7 +7,8 @@
         "corejs": 2,
         "helpers": true,
         "regenerator": true,
-        "useESModules": false
+        "useESModules": true,
+        "module":false
       }
     ],
     "@babel/plugin-syntax-dynamic-import"

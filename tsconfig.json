@@ -4,12 +4,13 @@
     "inlineSources": true,
     "sourceRoot": "/",
     "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
+    "module": "esNext",
+    "target": "es6",
     "jsx": "react",
     "allowJs": true,
     "baseUrl": ".",
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["./src/*"]
     },
