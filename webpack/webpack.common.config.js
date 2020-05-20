@@ -78,25 +78,11 @@ let config = {
         }
       },
       {
-        test: /\.css$/,
-        exclude: /(node_modules|libs)/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            // loader: 'happypack/loader?id=css-loader', 
-            options: {
-              modules: true,
-              namedExport: true
-            }
-          },
-        ],
-      },
-      {
         test: /\.scss|.css$/,
         // exclude: /(node_modules|libs)/,
         use: [
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             // loader: 'happypack/loader?id=css-loader', 
@@ -206,10 +192,10 @@ const plugins = [
   //   filename: 'index.html', // 生成的文件名
   //   chunks: ['vendors~main', 'main'] // 需要引入的模块js
   // }),
-  new MiniCssExtractPlugin({
-    filename: '[name].css',
-    chunkFilename: '[name].[chunkhash:8].css',
-  }),
+  // new MiniCssExtractPlugin({
+  //   filename: '[name].css',
+  //   chunkFilename: '[name].[chunkhash:8].css',
+  // }),
   new ImageminPlugin({
     plugins: [
       imageminMozjpeg({
