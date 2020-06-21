@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import axios from 'axios';
+import { get_config } from '@/service/http_config/domainSetting';
 import  * as styles from './index.scss';
 const infoArr = {
   phoneNumberNotice: '只能输入11位数字哦',
@@ -63,6 +64,7 @@ class Login extends React.Component<initProps, initState> {
   }
 
   componentDidMount () {
+    if (get_config().host === 'development')
     axios.get('/react/api/header.json').then((res) => {
       console.log(res);
     })
@@ -82,7 +84,7 @@ class Login extends React.Component<initProps, initState> {
   render () {
     return (
       <>
-        <img className={styles.img} src="../../assets/qq.jpg" alt="img"/>
+        <img className={styles.img} src={require('../../assets/girls.jpg')} alt="img"/>
         <div className={styles.bg}/>
         <div className={styles.login_wrapper}>
        <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>login</p>

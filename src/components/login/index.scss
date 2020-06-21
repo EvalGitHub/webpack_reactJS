@@ -4,8 +4,9 @@
 .bg {
   width:100%;
   height: 300px;
-  background: url(../../assets/qq.jpg) no-repeat;
-  background-size: contain;
+  background: url(../../assets/dog.jpg) no-repeat;
+  // background-size: contain;
+  object-fit: cover;
 }
 .login_wrapper{
     padding: pxToRem(30) pxToRem(20) 0;

@@ -12,7 +12,7 @@ const os = require('os');
 const fs = require('fs');
 // 获取系统cpu的最大核数
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-
+const CopyPlugin = require('copy-webpack-plugin');
 let config = {
   context: path.resolve(__dirname, '../src'),
   entry: {
@@ -203,7 +203,17 @@ const plugins = [
         progressive: true
       })
     ]
-  })
+  }),
+  new CopyPlugin(
+    {
+      patterns:[
+        {
+          from: path.resolve(__dirname, '../sw.js'), 
+          to:  path.resolve(__dirname, '../dist'),
+        }
+      ]
+    }
+  ),
 ];
 
 function mutipleEntry (config) {

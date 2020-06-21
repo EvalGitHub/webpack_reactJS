@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/browser';
 import '@/scss/reset.scss';
 import '@/scss/common.scss';
 import { hot } from 'react-hot-loader/root';
+import { init_config } from '@/service/http_config/domainSetting';
 // 创建一个context
 export const NameContext = React.createContext({
   name: "默认名称",
@@ -63,3 +64,21 @@ function initSentry () {
   });
 }
 initSentry();
+init_config();
+
+useServiceWork();
+function useServiceWork() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js', {
+        scope: '/'
+      }).then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+}
