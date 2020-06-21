@@ -33,8 +33,8 @@ interface HostConfig {
   port?: number | string ,
   fontWebSiteHost?: string
 };
-let config: HostConfig
-export const init_config = (cb: () => void) => {
+let config: HostConfig = DomainConfig.development;
+export const init_config = (cb?: () => void) => {
   return axios.get('/config').then((res:any) => {
     if (res.status === 200) {
       let env:envType = res.data;
@@ -51,12 +51,6 @@ export const init_config = (cb: () => void) => {
 
 export const get_config = () => {
   if (!config) {
-    console.error(`
-            Tried to get config before it was loaded. This should never happen.
-            Ensure your code is not run before the index.ts init function has been called.
-
-            Be aware that the config is not accessible from within the WHITEPAW Runtime.
-        `);
     return;
   }
   return config;
