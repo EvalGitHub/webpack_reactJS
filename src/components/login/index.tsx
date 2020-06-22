@@ -85,6 +85,8 @@ class Login extends React.Component<initProps, initState> {
     return (
       <>
         <img className={styles.img} src={require('../../assets/girls.jpg')} alt="img"/>
+        <img className={styles.img} src="../../assets/qq.jpg" alt="img"/>
+        <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
         <div className={styles.bg}/>
         <div className={styles.login_wrapper}>
        <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>login</p>

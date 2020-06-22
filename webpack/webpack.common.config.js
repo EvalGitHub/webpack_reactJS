@@ -9,7 +9,7 @@ const HappyPack = require('happypack');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const os = require('os');
-const fs = require('fs');
+const fs = require('fs'); 
 // 获取系统cpu的最大核数
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 const CopyPlugin = require('copy-webpack-plugin');
@@ -38,6 +38,9 @@ let config = {
       chunks: "all", 
       name: 'vendors'
     }
+  },
+  resolveLoader: {
+    modules: ['node_modules', path.join(__dirname, '../', 'my_loaders')]
   },
   module: {
     rules: [
@@ -75,6 +78,16 @@ let config = {
             ], '@babel/preset-react', '@babel/preset-typescript', ],
             plugins: ['react-hot-loader/babel']
           }
+        }
+      },
+      // 自己写的loader
+      {
+        test: /\.js$/,
+        loader: 'path-replace-loader',
+        exclude: /(node_modules)/,
+        options: {
+          path: '@/assets/work.jpg',
+          replacePath: 'https://kn-cdn.codemao.cn/nemoy/assets/breakf3c49ced.jpg'
         }
       },
       {
