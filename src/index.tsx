@@ -7,6 +7,8 @@ import '@/scss/reset.scss';
 import '@/scss/common.scss';
 import { hot } from 'react-hot-loader/root';
 import { init_config } from '@/service/http_config/domainSetting';
+// import { loadScript } from "@/utils";
+
 // 创建一个context
 export const NameContext = React.createContext({
   name: "默认名称",
@@ -31,6 +33,13 @@ class App extends React.Component<initProps, initState> {
       name: '我是改变的值'
     })
   };
+
+  /* async componentDidMount() {
+    await loadScript("https://connect.qq.com/qc_jssdkeee.js", () => {});
+    await loadScript("https://nemo.codemao.cn/lib/tingyun-rum.js", () => {});
+    await loadScript("https://kn-cdn.codemao.cn/nemoy/jquery.dll.js?5958b534d8d5ab510f20", () => {});
+    await loadScript("https://kn-cdn.codemao.cn/nemoy/main.334e0cb7.js", () => {});
+  } */
 
   render() {
     return (
