@@ -80,7 +80,8 @@ function useServiceWork() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js', {
-        scope: '/'
+        scope: '/',
+        updateViaCache: 'all',
       }).then(function(registration) {
         // Registration was successful
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -90,4 +91,9 @@ function useServiceWork() {
       });
     });
   }
+}
+
+
+function unRegister() {
+
 }

@@ -1,8 +1,7 @@
 var CACHE_NAME = 'my-site-cache_2ss003e';
-var urlsToCache = [
-  '/',
+var urlsToCache = [ // 这个数组只能是文件地址，绝对的或者相对的
   '/index.js',
-  '/assets/**.jpg'
+  '/assets/dog.jpg',
 ];
 
 var errResponseContent = `
@@ -19,6 +18,7 @@ var errResponseContent = `
 `
 
 self.addEventListener('install', function(e) {
+  self.skipWaiting(); // 跳过等待
   // Perform install steps
   e.waitUntil(
     caches.open(CACHE_NAME)
@@ -33,37 +33,40 @@ self.addEventListener('install', function(e) {
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
-      if (response) { // 命中缓存
+      if (response) { // 
+        console.log('命中缓存', e.request);
         return response
       }
       var fetchRequest = e.request.clone();
       return fetch(fetchRequest).then(
         function(response) {
+          console.log("fetchRequest", fetchRequest)
+          console.log(response.type);
           if(!response || response.status !== 200 || response.type !== 'basic') { 
             // 失败的请求，以及非自身发起的请求不进行缓存
             return response;
+          } else {
+            // 进行页面缓存
+            var responseToCache = response.clone();
+            caches.open(CACHE_NAME)
+            .then(function(cache) {
+              cache.put(e.request, responseToCache);
+            });
+            return response;
           }
-
-          // 进行页面缓存
-          var responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-          .then(function(cache) {
-            cache.put(e.request, responseToCache);
-          });
-          return response;
         }
       )
     }).catch(function(e) { // 如果出现错误就显示配置的页面
-      console.log(e);
-      return new Response(
+      /* return new Response(
         errResponseContent,
         {headers: {"Content-Type": "text/html"}}
-      )  
+      )   */
     })
   );
 })
 
 self.addEventListener("activate", function(e) {
+  clients.claim(); // 立即受控
   e.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(

@@ -223,7 +223,16 @@ const plugins = [
         {
           from: path.resolve(__dirname, '../sw.js'), 
           to:  path.resolve(__dirname, '../dist'),
-        }
+        },
+        {
+          from: path.resolve(__dirname, '../404.html'), 
+          to:  path.resolve(__dirname, '../dist'),
+        },
+        {
+          from: path.resolve(__dirname, '../manifest.json'), 
+          to:  path.resolve(__dirname, '../dist'),
+        },
+       
       ]
     }
   ),

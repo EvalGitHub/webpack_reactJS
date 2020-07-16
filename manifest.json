@@ -1,0 +1,8 @@
+{
+  "name": "Donate App",
+  "description": "This app helps you donate to worthy causes.",
+  "icons": [{
+    "src": "/src/assets/icon.png",
+    "sizes": "192x192"
+  }]
+}

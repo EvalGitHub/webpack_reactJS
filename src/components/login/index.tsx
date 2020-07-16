@@ -49,6 +49,7 @@ class Login extends React.Component<initProps, initState> {
   };
 
   getComponent = async () => {
+    this.fetch_data();
     const module = await import(/* webpackChunkName:"createElement" */ '@/utils/index');
     module.createElement().then((component:any) => {
       document.body.appendChild(component);
@@ -63,8 +64,17 @@ class Login extends React.Component<initProps, initState> {
     console.log('testEvent');
   }
 
+  fetch_data() {
+    axios.get('http://localhost:5000/get_data').then((res) => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   componentDidMount () {
-    if (get_config().host === 'development')
+    console.log('componentDidMount');
+    // if (get_config().host === 'development')
     axios.get('/react/api/header.json').then((res) => {
       console.log(res);
     })
@@ -84,25 +94,25 @@ class Login extends React.Component<initProps, initState> {
   render () {
     return (
       <>
+        <img className={styles.img} src="https://static.codemao.cn/community_frontend/asset/page_banner_dhj_e10a2.png" alt=""/>
         <img className={styles.img} src={require('../../assets/girls.jpg')} alt="img"/>
-        <img className={styles.img} src="../../assets/qq.jpg" alt="img"/>
         <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
         <div className={styles.bg}/>
         <div className={styles.login_wrapper}>
        <p className={styles.login_nav} onClick={this.getComponent} ref={ (ref) => this.myrefs = ref}>login</p>
        <section onClick={this.testEvent.bind(this)}>
-         <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
-           <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='enter your iphone number'/>
-         </p>
-         <div className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
-            <p className={styles.input_inner_wrapper}>
-              <input type='certCode' pattern='[0-9]*' className={styles.input_item} placeholder='enter your test code'  />
-              <button
-                className={[`${styles.get_code_btn}`, `${String(this.state.phoneNumber).length === 11 ? styles.active : ''}`].join(' ')}
-                >{this.state.certText}</button>
-            </p>
-         </div>
-         <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} id='btn' onClick={this.login.bind(this)} >login now</button>
+        <p className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
+          <input type='phoneNumber'  pattern='[0-9]*'  className={styles.input_item}   placeholder='enter your iphone number'/>
+        </p>
+        <div className={[`${styles.input_wrapper}`, `${styles.one_px_border_bottom}`].join(' ')}>
+          <p className={styles.input_inner_wrapper}>
+            <input type='certCode' pattern='[0-9]*' className={styles.input_item} placeholder='enter your test code'  />
+            <button
+              className={[`${styles.get_code_btn}`, `${String(this.state.phoneNumber).length === 11 ? styles.active : ''}`].join(' ')}
+              >{this.state.certText}</button>
+          </p>
+        </div>
+        <button className={[`${styles.login_btn}`, `${this.state.canLogin ? styles.active : ' '}`].join(' ')} id='btn' onClick={this.login.bind(this)} >login now</button>
        </section>
      </div>
       </>

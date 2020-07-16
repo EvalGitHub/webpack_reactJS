@@ -14,7 +14,7 @@ const initialContent = {
 };
 
 // cors setting [must before route setting]
-const loginAdress = ['http://localhost:8004','http://192.168.1.103:8004']
+const loginAdress = ['http://localhost:9004','http://192.168.1.103:8004']
 const corsConfig = {
   "origin": loginAdress,
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -32,6 +32,13 @@ app.use(express.static('./dist'));
 app.get('/config', function(req, res){
   res.json(initialContent[env]);
 });
+
+app.get('/get_data', function(req, res) {
+  res.json({
+    data: [1,2,3,4,5,555,6, 777],
+    msg: 'this is array data',
+  });
+})
 
 // start app
 function startApp () {
