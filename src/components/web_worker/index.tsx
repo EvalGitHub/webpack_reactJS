@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as styles from './style.scss';
+import * as Worker from 'worker-loader!../../utils/test.worker';
 
 const WebWorker = () => {
-  let worker:any = '';
-  function createWorker() {
-    worker = new Worker('http://localhost:9004/worker.js');
-  }
+  const worker = new (Worker as any)();
+/*   function createWorker() {
+    console.log('worker' ,Worker);
+    worker = new Worker();
+  } */
 
   function sendMsgToWorker() {
     worker.postMessage('Hello World');
@@ -31,20 +33,17 @@ const WebWorker = () => {
   }
 
   React.useEffect(() => {
-<<<<<<< HEAD
     watchMsgFromWorker();
     // workerCreateErr();
    /*  return () => {
       clearWorker();
     } */
-=======
-    createWorker();
+    // createWorker();
     watchMsgFromWorker();
-    workerCreateErr();
-    return () => {
+    // workerCreateErr();
+   /*  return () => {
       clearWorker();
-    }
->>>>>>> feat：webworker
+    } */
   }, []);
 
   return <div className={styles.container}>

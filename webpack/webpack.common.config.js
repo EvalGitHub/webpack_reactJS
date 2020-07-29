@@ -236,10 +236,6 @@ const plugins = [
           to:  path.resolve(__dirname, '../dist'),
         },
         {
-          from: path.resolve(__dirname, '../worker.js'), 
-          to:  path.resolve(__dirname, '../dist'),
-        },
-        {
           from: path.resolve(__dirname, '../404.html'), 
           to:  path.resolve(__dirname, '../dist'),
         },
