@@ -75,7 +75,7 @@ function initSentry () {
 initSentry();
 init_config();
 
-useServiceWork();
+// useServiceWork();
 function useServiceWork() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
