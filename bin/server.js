@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const history = require('connect-history-api-fallback');
+
 // const proxy = require('http-proxy-middleware');
 
 
@@ -26,7 +28,7 @@ app.options('*',cors(corsConfig))
 app.all('*', cors(corsConfig));
 
 app.use(express.json());
-
+app.use(history());
 // route
 app.use(express.static('./dist'));
 
