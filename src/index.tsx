@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+import '@babel/polyfill';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import Routeconfig from '@/route';
@@ -11,11 +11,11 @@ import { init_config } from '@/service/http_config/domainSetting';
 
 // 创建一个context
 export const NameContext = React.createContext({
-  name: "默认名称",
-  changeName: () => {}
+  name: '默认名称',
+  changeName: () => {},
 });
 interface initProps {
-  [propsName:string]:any,
+  [propsName:string]:any;
 }
 interface initState {
   [propsName:string]:any,

@@ -15,3 +15,10 @@ interface Window {
   QC:any;
   jQuery:any;
 }
+
+declare module 'worker-loader!*' {
+  class WebpackWorker extends Worker {
+    constructor();
+  }
+  export default WebpackWorker;
+}
