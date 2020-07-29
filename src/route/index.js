@@ -16,6 +16,7 @@ function Routeconfig() {
         <Route exact path="/hight_component" component={loadable(() => import("@/components/hight_component/my_component"))}/>
         <Route exact path="/hight_component02" component={loadable(() => import("@/components/hight_component/my_component02"))}/>
         <Route exact path="/mobx" component={loadable(() => import("@/components/mobx_use"))}/>
+        <Route exact path="/web_worker" component={loadable(() => import("@/components/web_worker"))}/>
         <Redirect exact from="/" to="/detail"></Redirect>
       </Switch>
     </Router>
