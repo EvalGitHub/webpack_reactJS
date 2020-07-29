@@ -70,10 +70,7 @@ function initSentry () {
 initSentry();
 init_config();
 
-window.addEventListener('load', function() {
-  useServiceWork();
-})
-
+// useServiceWork();
 function useServiceWork() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
