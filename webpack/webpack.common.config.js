@@ -220,14 +220,14 @@ const plugins = [
   //   filename: '[name].css',
   //   chunkFilename: '[name].[chunkhash:8].css',
   // }),
-  new ImageminPlugin({
+  /* new ImageminPlugin({
     plugins: [
       imageminMozjpeg({
         quality: 70,
         progressive: true
       })
     ]
-  }),
+  }), */
   new CopyPlugin(
     {
       patterns:[
