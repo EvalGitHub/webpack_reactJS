@@ -33,20 +33,9 @@ class App extends React.Component<initProps, initState> {
       name: '我是改变的值'
     })
   };
-<<<<<<< HEAD
-
-  /* async componentDidMount() {
-    await loadScript("https://connect.qq.com/qc_jssdkeee.js", () => {});
-    await loadScript("https://nemo.codemao.cn/lib/tingyun-rum.js", () => {});
-    await loadScript("https://kn-cdn.codemao.cn/nemoy/jquery.dll.js?5958b534d8d5ab510f20", () => {});
-    await loadScript("https://kn-cdn.codemao.cn/nemoy/main.334e0cb7.js", () => {});
-  } */
-
-=======
   componentWillMount() {
     document.dispatchEvent(new Event('render-event'));
   }
->>>>>>> EventBus
   render() {
     return (
      <NameContext.Provider value={{name: this.state.name, changeName: this.changeName}}>
@@ -102,13 +91,6 @@ function useServiceWork() {
   }
 }
 
-<<<<<<< HEAD
-
-function unRegister() {
-
-}
-=======
 // navigator.serviceWorker.addEventListener('controllerchange', () => {
 //   window.location.reload();
 // })
->>>>>>> EventBus

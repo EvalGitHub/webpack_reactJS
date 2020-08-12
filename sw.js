@@ -1,15 +1,9 @@
 var CACHE_NAME = 'my-site-cache_2ss003e';
-<<<<<<< HEAD
-var urlsToCache = [ // 这个数组只能是文件地址，绝对的或者相对的
-  '/index.js',
-  '/assets/dog.jpg',
-=======
 var urlsToCache = [
   // '/',
   // '/index.js',
   '/assets/girls.jpg',
   // '/login/index.tsx'
->>>>>>> EventBus
 ];
 
 var errResponseContent = `
@@ -49,13 +43,7 @@ self.addEventListener('fetch', function(e) {
       var fetchRequest = e.request.clone();
       return fetch(fetchRequest).then(
         function(response) {
-<<<<<<< HEAD
-          console.log("fetchRequest", fetchRequest)
-          console.log(response.type);
-          if(!response || response.status !== 200 || response.type !== 'basic') { 
-=======
           if(!response || response.status !== 200 || response.type !== 'basic' ) { 
->>>>>>> EventBus
             // 失败的请求，以及非自身发起的请求不进行缓存
             return response;
           } else {
@@ -67,12 +55,6 @@ self.addEventListener('fetch', function(e) {
             });
             return response;
           }
-<<<<<<< HEAD
-        }
-      )
-    }).catch(function(e) { // 如果出现错误就显示配置的页面
-      /* return new Response(
-=======
           // 进行页面缓存
           // var responseToCache = response.clone();
           // caches.open(CACHE_NAME)
@@ -85,7 +67,6 @@ self.addEventListener('fetch', function(e) {
       )
     }).catch(function(e) { // 如果出现错误就显示配置的页面
       return new Response(
->>>>>>> EventBus
         errResponseContent,
         {headers: {"Content-Type": "text/html"}}
       )   */
@@ -94,11 +75,7 @@ self.addEventListener('fetch', function(e) {
 })
 
 self.addEventListener("activate", function(e) {
-<<<<<<< HEAD
-  clients.claim(); // 立即受控
-=======
   clients.claim();
->>>>>>> EventBus
   e.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(

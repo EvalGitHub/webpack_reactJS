@@ -50,13 +50,9 @@ class Login extends React.Component<initProps, initState> {
   };
 
   getComponent = async () => {
-<<<<<<< HEAD
-    this.fetch_data();
-=======
     this.setState(prevState => ({
       phoneNumber: prevState.phoneNumber + '2'
     }))
->>>>>>> EventBus
     const module = await import(/* webpackChunkName:"createElement" */ '@/utils/index');
     module.createElement().then((component:any) => {
       document.body.appendChild(component);
@@ -80,10 +76,6 @@ class Login extends React.Component<initProps, initState> {
   }
 
   componentDidMount () {
-<<<<<<< HEAD
-    console.log('componentDidMount');
-=======
->>>>>>> EventBus
     // if (get_config().host === 'development')
     axios.get('/react/api/header.json').then((res) => {
       console.log('res', res);
