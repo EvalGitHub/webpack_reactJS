@@ -29,6 +29,22 @@ app.use(express.json());
 
 // route
 app.use(express.static('./dist'));
+
+app.get('/message', function(req, res) {
+  res.header('Content-Type','text/event-stream'),
+  res.header('Cache-Control','no-cache'),
+  res.header('Connection','keep-alive'),
+  // res.write(200, {
+  //   'Content-Type': 'text/event-stream',
+  //   'Cache-Control': 'no-cache',
+  //   'Connection': 'keep-alive'
+  // }); 
+  // 
+  setInterval(function(){
+    res.write('data: ' + +new Date() + '\n\n');
+  }, 1000);
+})
+
 app.get('/config', function(req, res){
   res.json(initialContent[env]);
 });

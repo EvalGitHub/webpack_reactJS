@@ -12,7 +12,7 @@ import { init_config } from '@/service/http_config/domainSetting';
 // 创建一个context
 export const NameContext = React.createContext({
   name: "默认名称",
-  changeName: () => {}
+  changeName: () => {}  
 });
 interface initProps {
   [propsName:string]:any,
@@ -33,6 +33,7 @@ class App extends React.Component<initProps, initState> {
       name: '我是改变的值'
     })
   };
+<<<<<<< HEAD
 
   /* async componentDidMount() {
     await loadScript("https://connect.qq.com/qc_jssdkeee.js", () => {});
@@ -41,6 +42,11 @@ class App extends React.Component<initProps, initState> {
     await loadScript("https://kn-cdn.codemao.cn/nemoy/main.334e0cb7.js", () => {});
   } */
 
+=======
+  componentWillMount() {
+    document.dispatchEvent(new Event('render-event'));
+  }
+>>>>>>> EventBus
   render() {
     return (
      <NameContext.Provider value={{name: this.state.name, changeName: this.changeName}}>
@@ -75,7 +81,10 @@ function initSentry () {
 initSentry();
 init_config();
 
-useServiceWork();
+window.addEventListener('load', function() {
+  useServiceWork();
+})
+
 function useServiceWork() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
@@ -93,7 +102,13 @@ function useServiceWork() {
   }
 }
 
+<<<<<<< HEAD
 
 function unRegister() {
 
 }
+=======
+// navigator.serviceWorker.addEventListener('controllerchange', () => {
+//   window.location.reload();
+// })
+>>>>>>> EventBus

@@ -29,6 +29,7 @@ interface initState {
 class Login extends React.Component<initProps, initState> {
   myref:any = '';
   myrefs:any = '';
+  
   constructor (props:initProps) {
     super(props);
     this.state = {
@@ -49,7 +50,13 @@ class Login extends React.Component<initProps, initState> {
   };
 
   getComponent = async () => {
+<<<<<<< HEAD
     this.fetch_data();
+=======
+    this.setState(prevState => ({
+      phoneNumber: prevState.phoneNumber + '2'
+    }))
+>>>>>>> EventBus
     const module = await import(/* webpackChunkName:"createElement" */ '@/utils/index');
     module.createElement().then((component:any) => {
       document.body.appendChild(component);
@@ -73,10 +80,13 @@ class Login extends React.Component<initProps, initState> {
   }
 
   componentDidMount () {
+<<<<<<< HEAD
     console.log('componentDidMount');
+=======
+>>>>>>> EventBus
     // if (get_config().host === 'development')
     axios.get('/react/api/header.json').then((res) => {
-      console.log(res);
+      console.log('res', res);
     })
 
     document.body.addEventListener('click', (e:any) => {
@@ -85,7 +95,11 @@ class Login extends React.Component<initProps, initState> {
       }
       console.log('我是body的click监听事件');
     })
-
+    const es = new EventSource('http://5000/message')
+    es.onmessage = function(e){
+      console.log(e.data); // 打印服务器推送的信息
+    }
+    
   /*   document.getElementById('btn').addEventListener('click', e => {
       e.stopPropagation();
     }) */
