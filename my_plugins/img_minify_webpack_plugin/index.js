@@ -18,10 +18,10 @@ module.exports = class ImgMinifyWebpackPlugin {
       const imgs = Object.keys(compilation.assets).filter(v => IMG_REGEXP.test(v));
       if (!imgs.length) return Promise.resolve();
       const promises = imgs.map(v => CompressImg(compilation.assets, v));
-      // const spinner = ora("Image is compressing......").start();
+      const spinner = ora("Image is compressing......").start();
       return Promise.all(promises).then(res => {
-        // spinner.stop();
-        // logged && res.forEach(v => console.log(v));
+        spinner.stop();
+        logged && res.forEach(v => console.log(v));
       });
     });
   }
