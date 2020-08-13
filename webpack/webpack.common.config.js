@@ -24,7 +24,8 @@ let config = {
     chunkFilename: '[name].chunk.js', // 对于其他的非入口文件（间接引用的）
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
-    sourceMapFilename: "[name].js.map"
+    sourceMapFilename: "[name].js.map",
+    globalObject: 'this'
   },
   resolve: {
     alias: {
@@ -54,6 +55,16 @@ let config = {
           }
         },
         include: path.resolve('src'),
+      },
+      {
+        test: /\.worker\.tsx$/,
+        use: { 
+          loader: 'worker-loader',
+          options: {
+            inline: true
+            // fallback: false
+          }
+        }
       },
       {
         test: /\.jsx?$/,
@@ -146,7 +157,7 @@ let config = {
             }
           }
         ]
-      }
+      },
     ]
   },
   plugins: [
@@ -209,14 +220,14 @@ const plugins = [
   //   filename: '[name].css',
   //   chunkFilename: '[name].[chunkhash:8].css',
   // }),
-  new ImageminPlugin({
+  /* new ImageminPlugin({
     plugins: [
       imageminMozjpeg({
         quality: 70,
         progressive: true
       })
     ]
-  }),
+  }), */
   new CopyPlugin(
     {
       patterns:[
