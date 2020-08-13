@@ -8,6 +8,10 @@
       "logged": {
           "description": "print log",
           "type": "boolean"
+      },
+      "cacheFolder": {
+        "description": "cache dir",
+          "type": "string"
       }
   },
   "additionalProperties": false

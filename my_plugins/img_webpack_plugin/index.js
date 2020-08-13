@@ -128,7 +128,7 @@ class ImageminPlugin {
       testFunction,
       cacheFolder
     } = this.options
-
+   
     // Return an array of promises that resolve when each file is done being optimized
     // pass everything through the throttle function to limit maximum concurrency
     return map(compilation.assets, (asset, filename) => throttle(async () => {
@@ -137,11 +137,13 @@ class ImageminPlugin {
       if (testFunction(filename, assetSource)) {
         // Use the helper function to get the file from cache if possible, or
         // run the optimize function and store it in the cache when done
-        let optimizedImageBuffer = await getFromCacheIfPossible(cacheFolder, assetSource, () => {
-          return optimizeImage(assetSource, this.options.imageminOptions)
-        })
-        // Then write the optimized version back to the asset object as a "raw source"
-        compilation.assets[filename] = new RawSource(optimizedImageBuffer)
+        if (/\.(jpe?g|png)$/.test(filename)) {
+          let optimizedImageBuffer = await getFromCacheIfPossible(cacheFolder, assetSource, () => {
+            return optimizeImage(assetSource, this.options.imageminOptions)
+          })
+          // Then write the optimized version back to the asset object as a "raw source"
+          compilation.assets[filename] = new RawSource(optimizedImageBuffer)
+        }
       }
     }))
   }
