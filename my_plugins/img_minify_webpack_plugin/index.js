@@ -1,5 +1,7 @@
 const SchemaUtils = require('schema-utils');
 const ora = require('ora');
+const map = require('lodash.map')
+
 const { PLUGIN_NAME, IMG_REGEXP } = require('./getting');
 
 const Schema = require('./schema.json');
@@ -14,15 +16,24 @@ module.exports = class ImgMinifyWebpackPlugin {
   apply(compiler) {
     const {enabled, logged} = this.opts;
     SchemaUtils(Schema, this.opts, {name: PLUGIN_NAME});
-    enabled && compiler.hooks.emit.tap(PLUGIN_NAME, compilation => {
+
+    const onEmit = async (compilation, callback) => {
       const imgs = Object.keys(compilation.assets).filter(v => IMG_REGEXP.test(v));
       if (!imgs.length) return Promise.resolve();
-      const promises = imgs.map(v => CompressImg(compilation.assets, v));
-      const spinner = ora("Image is compressing......").start();
-      return Promise.all(promises).then(res => {
-        spinner.stop();
-        logged && res.forEach(v => console.log(v));
-      });
-    });
+      
+      const promises = imgs.map(v => CompressImg(compilation, v));
+      try {
+        const spinner = ora("Image is compressing......").start();
+        await Promise.all([...promises]).then(res => {
+          spinner.stop();
+          logged && res.forEach(v => console.log(v));
+        });
+        callback();
+      } catch(err) {
+        callback(err);
+      }
+    };
+
+    enabled && compiler.hooks.emit.tapAsync(PLUGIN_NAME, onEmit);
   }
 }
