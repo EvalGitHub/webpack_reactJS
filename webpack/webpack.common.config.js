@@ -227,7 +227,7 @@ const plugins = [
         progressive: true
       })
     ]
-  }), */
+  }),  */ 
   new CopyPlugin(
     {
       patterns:[

@@ -17,7 +17,7 @@ module.exports = merge(commonWebpackConfig, {
     inline: true,
     disableHostCheck: true,
     // host: '192.168.0.6',
-    host: '192.168.82.204',
+    host: '192.168.0.5',
     proxy: {
       '/react/api': {
         target: 'http://www.dell-lee.com', // 地址代理
@@ -38,6 +38,7 @@ module.exports = merge(commonWebpackConfig, {
     new ImgMinifyWebpackPlugin({
       enabled: true,
       logged: true,
+      cacheFolder: path.resolve('./cache'),
     })
   ],
 });
