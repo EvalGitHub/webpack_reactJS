@@ -7,7 +7,8 @@ const { ByteSize, RoundNum } = require("trample/node");
 
 const { UploadImg, DownloadImg } = require('./down_up_load_img');
 
-async function CompressImg(assets, path) {
+async function CompressImg(compilation, path) {
+  let assets = compilation.assets;
   try {
     const file = assets[path].source(); // 获取图片资源
     const obj = await UploadImg(file); // 返回文件的信息{size, type, width, height, ratio, url, }
@@ -17,9 +18,11 @@ async function CompressImg(assets, path) {
 
     const data = await DownloadImg(obj.output.url); 
 
-
+    console.log(assets[path]);
     const dpath = assets[path].existsAt;
     // 判断文件嘉是否存在
+
+    console.log('dpath', dpath);
 
     const msg = `${Figures.tick} Compressed [${Chalk.yellowBright(path)}] completed: Old Size ${oldSize}, New Size ${newSize}, Optimization Ratio ${ratio}`;
     Fs.writeFileSync(dpath, data, "binary");
