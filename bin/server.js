@@ -4,6 +4,8 @@ const app = express();
 const cors = require('cors');
 const history = require('connect-history-api-fallback');
 const spdy = require('spdy');
+const fs = require('fs');
+const path = require('path');
 
 // const proxy = require('http-proxy-middleware');
 
@@ -59,9 +61,11 @@ app.get('/get_data', function(req, res) {
   });
 })
 
+let ketPath = path.resolve(__dirname,  '../cert/ca.key');
+let certPath = path.resolve(__dirname,  '../cert/ca.crt');
 const options = {
-  key: fs.readFileSync(__dirname + '/server.key'),
-  cert:  fs.readFileSync(__dirname + '/server.crt')
+  key: ketPath,
+  cert: certPath,
 }
 
 // start app

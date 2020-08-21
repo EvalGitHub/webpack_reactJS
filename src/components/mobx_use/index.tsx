@@ -22,7 +22,7 @@ MobxState.handleDec = function () {
   MobxState.count--;
 }
 
-reaction(() => MobxState.count, (data, reaction) => {
+reaction(() => MobxState.count, (data:any, reaction) => {
   console.log('reaction中的data' + data) 
   if (data === 10) {
     reaction.dispose();
