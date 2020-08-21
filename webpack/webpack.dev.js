@@ -39,6 +39,7 @@ module.exports = merge(commonWebpackConfig, {
       enabled: true,
       logged: true,
 
+      
       cacheFolder: path.resolve('./cache'),
     })
   ],
