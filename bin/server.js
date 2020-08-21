@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const history = require('connect-history-api-fallback');
+const spdy = require('spdy');
 
 // const proxy = require('http-proxy-middleware');
 
@@ -58,9 +59,15 @@ app.get('/get_data', function(req, res) {
   });
 })
 
+const options = {
+  key: fs.readFileSync(__dirname + '/server.key'),
+  cert:  fs.readFileSync(__dirname + '/server.crt')
+}
+
 // start app
 function startApp () {
-  app.listen(5000,function(err){
+  spdy
+  .createServer(options, app).listen(5000,function(err){
     if(err){
       console.log(err);
       return;
