@@ -28,8 +28,8 @@ async function CompressImg(compilation, path, cacheFolder) {
     const ratio = Chalk.blueBright(RoundNum(1 - obj.output.ratio, 2, true));
 
     const data = await DownloadImg(obj.output.url); 
-    // const dpath = assets[path].existsAt;
-    
+    const dpath = assets[path].existsAt;
+    // console.log('dpath', dpath);
     let optimizedImageBuffer = await getFromCacheIfPossible(cacheFolder, file, () => {
       if (Buffer.from(data, 'utf8').length > Buffer.from(file, 'utf8').length) {
         return Buffer.from(file, 'utf8');
