@@ -38,6 +38,7 @@ module.exports = merge(commonWebpackConfig, {
     new ImgMinifyWebpackPlugin({
       enabled: true,
       logged: true,
+
       cacheFolder: path.resolve('./cache'),
     })
   ],
