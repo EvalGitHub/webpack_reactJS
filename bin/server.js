@@ -64,19 +64,19 @@ app.get('/get_data', function(req, res) {
 let ketPath = path.resolve(__dirname,  '../cert/ca.key');
 let certPath = path.resolve(__dirname,  '../cert/ca.crt');
 const options = {
-  key: ketPath,
-  cert: certPath,
+  key: fs.readFileSync(ketPath),
+  cert: fs.readFileSync(certPath),
 }
 
 // start app
 function startApp () {
   spdy
-  .createServer(options, app).listen(5000,function(err){
+  .createServer(options, app).listen(5001,function(err){
     if(err){
       console.log(err);
       return;
     }
-    console.log('> Listening at  http://localhost: '+ 5000 + '\n')
+    console.log('> Listening at  https://localhost: '+ 5001 + '\n')
   });
 };
 startApp();
