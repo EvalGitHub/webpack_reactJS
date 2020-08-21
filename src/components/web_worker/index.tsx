@@ -38,12 +38,6 @@ const WebWorker = () => {
    /*  return () => {
       clearWorker();
     } */
-    // createWorker();
-    watchMsgFromWorker();
-    // workerCreateErr();
-   /*  return () => {
-      clearWorker();
-    } */
   }, []);
 
   return <div className={styles.container}>
