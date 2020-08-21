@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const HappyPack = require('happypack');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminPlugin = require('../my_plugins/img_webpack_plugin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const os = require('os');
 const fs = require('fs'); 
@@ -220,14 +220,14 @@ const plugins = [
   //   filename: '[name].css',
   //   chunkFilename: '[name].[chunkhash:8].css',
   // }),
-  /* new ImageminPlugin({
+/*   new ImageminPlugin({
     plugins: [
       imageminMozjpeg({
         quality: 70,
         progressive: true
       })
     ]
-  }), */
+  }),  */ 
   new CopyPlugin(
     {
       patterns:[
@@ -243,7 +243,10 @@ const plugins = [
           from: path.resolve(__dirname, '../manifest.json'), 
           to:  path.resolve(__dirname, '../dist'),
         },
-       
+       /*  {
+          from: path.resolve(__dirname, '../src/assets'), 
+          to:  path.resolve(__dirname, '../dist'),
+        }, */
       ]
     }
   ),
