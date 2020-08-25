@@ -68,7 +68,7 @@ class Login extends React.Component<initProps, initState> {
   }
 
   fetch_data() {
-    axios.get('http://localhost:5000/get_data').then((res) => {
+    axios.get('http://:5000/get_data').then((res) => {
       console.log(res);
     }).catch(err => {
       console.log(err);
@@ -87,7 +87,7 @@ class Login extends React.Component<initProps, initState> {
       }
       console.log('我是body的click监听事件');
     })
-    const es = new EventSource('http://5000/message')
+    const es = new EventSource('http://192.168.82.204:5000/message')
     es.onmessage = function(e){
       console.log(e.data); // 打印服务器推送的信息
     }

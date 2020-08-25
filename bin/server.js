@@ -16,7 +16,7 @@ const initialContent = {
 };
 
 // cors setting [must before route setting]
-const loginAdress = ['http://localhost:9004','http://192.168.1.103:8004']
+const loginAdress = ['http://localhost:9004','http://192.168.1.103:8004', 'http://192.168.82.204:9004']
 const corsConfig = {
   "origin": loginAdress,
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
