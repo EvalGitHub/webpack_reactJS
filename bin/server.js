@@ -19,9 +19,9 @@ const initialContent = {
 };
 
 // cors setting [must before route setting]
-const loginAdress = ['http://localhost:9004','http://192.168.1.103:8004']
+const loginAdress = ['http://localhost:9004','http://192.168.3.4:9004']
 const corsConfig = {
-  "origin": loginAdress,
+  "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 200,
@@ -69,7 +69,7 @@ const options = {
 }
 
 // start app
-function startApp () {
+function startAppHttps2 () {
   spdy
   .createServer(options, app).listen(5001,function(err){
     if(err){
@@ -79,4 +79,16 @@ function startApp () {
     console.log('> Listening at  https://localhost: '+ 5001 + '\n')
   });
 };
-startApp();
+// startAppHttps2();
+
+function startAppHttp () {
+  app.listen(5001,function(err){
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log('> Listening at  http://localhost: '+ 5001 + '\n')
+  });
+};
+
+startAppHttp();

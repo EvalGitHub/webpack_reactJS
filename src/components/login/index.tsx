@@ -87,7 +87,7 @@ class Login extends React.Component<initProps, initState> {
       }
       console.log('我是body的click监听事件');
     })
-    const es = new EventSource('http://5000/message')
+    const es = new EventSource('http://localhost:5001/message')
     es.onmessage = function(e){
       console.log(e.data); // 打印服务器推送的信息
     }

@@ -3,6 +3,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const commonWebpackConfig = require('./webpack.common.config');
 const ImgMinifyWebpackPlugin = require('../my_plugins/img_minify_webpack_plugin');
+const CrudeTimingPlugin = require('../my_plugins/crude_time_plugin');
 module.exports = merge(commonWebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
@@ -16,8 +17,8 @@ module.exports = merge(commonWebpackConfig, {
     open: true,
     inline: true,
     disableHostCheck: true,
-    // host: '192.168.0.6',
-    host: '192.168.82.204',
+    // host: '192.168.3.4',
+    // host: '192.168.82.204',
     proxy: {
       '/react/api': {
         target: 'http://www.dell-lee.com', // 地址代理
@@ -32,6 +33,7 @@ module.exports = merge(commonWebpackConfig, {
     }
   },
   plugins: [
+    new CrudeTimingPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

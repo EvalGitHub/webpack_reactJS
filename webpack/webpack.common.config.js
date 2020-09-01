@@ -44,6 +44,7 @@ let config = {
     modules: ['node_modules', path.join(__dirname, '../', 'my_loaders')]
   },
   module: {
+    noParse: /lodash/,
     rules: [
       {
         test: /\.ext$/,  //  loader 的编译结果写入硬盘缓存，再次构建如果文件没有发生变化则会直接拉取缓存
