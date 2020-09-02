@@ -102,10 +102,6 @@ class Login extends React.Component<initProps, initState> {
       <>
         <img className={styles.img} src="https://static.codemao.cn/community_frontend/asset/page_banner_dhj_e10a2.png" alt=""/>
         <img className={styles.img} src={require('@/assets/girl.jpg')} alt="img"/>
-        <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
-        <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
-        <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
-        <img className={styles.img} src={require('@/assets/work.jpg')} alt="img"/>
         <img className={styles.img} src={require('@/assets/wechat.png')} alt="img"/>
         <div className={styles.bg}/>
         <div className={styles.login_wrapper}>

@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const commonWebpackConfig = require('./webpack.common.config');
 const ImgMinifyWebpackPlugin = require('../my_plugins/img_minify_webpack_plugin');
 const CrudeTimingPlugin = require('../my_plugins/crude_time_plugin');
+const fs = require('fs');
 module.exports = merge(commonWebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
@@ -17,8 +18,12 @@ module.exports = merge(commonWebpackConfig, {
     open: true,
     inline: true,
     disableHostCheck: true,
-    // host: '192.168.3.4',
-    // host: '192.168.82.204',
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.key')),
+      cert: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.crt')),
+      ca: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.csr')),
+    },
+    host: '192.168.3.4',
     proxy: {
       '/react/api': {
         target: 'http://www.dell-lee.com', // 地址代理
@@ -40,8 +45,6 @@ module.exports = merge(commonWebpackConfig, {
     new ImgMinifyWebpackPlugin({
       enabled: true,
       logged: true,
-
-      
       cacheFolder: path.resolve('./cache'),
     })
   ],
