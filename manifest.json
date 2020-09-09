@@ -1,8 +1,16 @@
 {
-  "name": "Donate App",
-  "description": "This app helps you donate to worthy causes.",
-  "icons": [{
-    "src": "/src/assets/icon.png",
-    "sizes": "192x192"
-  }]
+  "short_name": "this is first pwa",
+  "name": "PWA",
+  "description": "Progressive Web App that lists games submitted to the A-Frame category in the js13kGames 2017 competition.",
+  "icons": [
+    {
+      "src": "./src/assets/images/icon.png",
+      "sizes": "460x460",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "theme_color": "#B12A34",
+  "background_color": "#B12A34"
 }
