@@ -4,23 +4,19 @@ import axios from 'axios';
 const DomainConfig = {
   development: {
     env: 'development',
-    host: 'https://backend-dev.codemao.cn/',
     port: 0,
     // fontWebSiteHost: 'http://192.168.0.6:9004/',
   },
   test: {
     env: 'test',
-    host: ' https://test-api.codemao.cn/',
     port: 0,
   },
   production: {
     env: 'production',
-    host: 'https://api.codemao.cn/',
     port: 0,
   },
   staging: {
     env: 'staging',
-    host: 'https://backend-test.codemao.cn/',
     port: 0,
   }
 };

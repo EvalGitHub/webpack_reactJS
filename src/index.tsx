@@ -61,13 +61,13 @@ if (module.hot) {
   });
 };
 
-function initSentry () {
+function init_sentry () {
   Sentry.init({
     dsn: "https://a9ab229b24b348b8adb2faf56968031e@sentry.io/1798784",
     environment: 'development'
   });
 }
-initSentry();
+init_sentry();
 init_config();
 
 useServiceWork();
