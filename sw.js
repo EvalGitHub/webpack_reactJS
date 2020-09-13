@@ -1,4 +1,4 @@
-var CACHE_NAME = 'my-site-cache_2ss003e';
+var CACHE_NAME = new Date().getTime();
 var urlsToCache = [
   // '/',
   // '/index.js',
@@ -69,7 +69,7 @@ self.addEventListener('fetch', function(e) {
       return new Response(
         errResponseContent,
         {headers: {"Content-Type": "text/html"}}
-      )   */
+      ) 
     })
   );
 })

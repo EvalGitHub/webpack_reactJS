@@ -18,11 +18,11 @@ module.exports = merge(commonWebpackConfig, {
     open: true,
     inline: true,
     disableHostCheck: true,
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.key')),
-      cert: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.crt')),
-      ca: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.csr')),
-    },
+    // https: {
+    //   key: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.key')),
+    //   cert: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.crt')),
+    //   ca: fs.readFileSync(path.resolve(__dirname,  '../cert/ca.csr')),
+    // },
     host: '192.168.3.4',
     proxy: {
       '/react/api': {
