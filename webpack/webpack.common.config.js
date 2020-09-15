@@ -146,6 +146,19 @@ let config = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(t|j)s(x?)$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              cache: true,
+            },
+          },
+        ],
+        exclude: /(node_modules)/,
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
